@@ -24,10 +24,10 @@ Things you may want to cover:
 * ...
 
 
-[![Build Status](https://codeship.com/projects/60fbdf30-c358-0135-2f2a-3e1c866e82bd/status?branch=master)
+![Build Status](https://codeship.com/projects/60fbdf30-c358-0135-2f2a-3e1c866e82bd/status?branch=master)
 
 [![Code Climate](https://codeclimate.com/github/cara-miller/crunchy/badges/gpa.svg)](https://codeclimate.com/github/cara-miller/crunchy)
 
 [![Coverage Status](https://coveralls.io/repos/github/cara-miller/crunchy/badge.svg?branch=master)](https://coveralls.io/github/cara-miller/crunchy?branch=master)
-<!-- 
+<!--
 [![Coverage Status](https://coveralls.io/repos/github/cara-miller/crunchy/badge.svg?branch=master](https://coveralls.io/github/cara-miller/crunchy?branch=master) -->
