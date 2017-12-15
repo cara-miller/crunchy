@@ -16,6 +16,7 @@
 /node_modules
 /yarn-error.log
 
+/coverage
 .byebug_history
 /node_modules
 /app/assets/javascripts/bundle.js
