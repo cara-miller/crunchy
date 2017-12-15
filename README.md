@@ -1,28 +1,30 @@
 # README
+* Ruby version 2.3.3
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+* Authors: Cara Miller
 
-Things you may want to cover:
+* Name: Crunchy
 
-* Ruby version
+* Features:
+-Create a Product Line
+-Add Products to Product Line
+-Add labor, supplies, and comparables to products
+-Choose preferred source for supplies
+-Carry products over from one product line to another
+-Carry supplies over from one product to another
+-Delete products from product lines
+-Delete supplies from products
+-Assert minimum acceptable profit margin
+-Determine whether minimum profit margin is met at the product level
+-Determine whether minimum profit margin is met at the product line level
 
-* System dependencies
+* Technologies:
+-Ruby on Rails
+-React.js
+-Postgres
+-API
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
+* Badges:
 
 ![Build Status](https://codeship.com/projects/60fbdf30-c358-0135-2f2a-3e1c866e82bd/status?branch=master)
 
