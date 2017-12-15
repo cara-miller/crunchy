@@ -26,6 +26,8 @@
 
 * Badges:
 
+I'm adding this line and submitting a pull request
+
 ![Build Status](https://codeship.com/projects/60fbdf30-c358-0135-2f2a-3e1c866e82bd/status?branch=master)
 
 [![Code Climate](https://codeclimate.com/github/cara-miller/crunchy/badges/gpa.svg)](https://codeclimate.com/github/cara-miller/crunchy)
