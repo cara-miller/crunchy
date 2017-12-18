@@ -9,6 +9,22 @@
   </head>
 
   <body>
+    <div class="top-bar">
+      <a href="../"><h1 class="menu-text">Crunchy</h1></a>
+    </div>
+    <nav>
+      <ul>
+        <% if user_signed_in? %>
+          <button id="devise"><%= link_to 'Edit Account', edit_user_registration_path %></button>
+          <button id="devise"><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></button>
+        <% else %>
+          <button id="devise"><%= link_to 'Sign In', new_user_session_path %></button>
+          <button id="devise"><%= link_to 'Sign Up', new_user_registration_path %></button>
+        <% end %>
+      </ul>
+    </nav>
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
     <%= yield %>
   </body>
 </html>

@@ -4,5 +4,4 @@ class Api::V1::ProductsController < ApiController
     products = Product.all
     render json: products
   end
-
 end
