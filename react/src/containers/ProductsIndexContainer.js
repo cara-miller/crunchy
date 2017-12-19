@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import ProductTileComponent from "../components/ProductTileComponent"
+import ProductTile from "../components/ProductTile"
 import { Route, IndexRoute, Router, browserHistory, Link, Redirect } from 'react-router';
 
 class ProductsIndexContainer extends Component {
@@ -33,7 +33,7 @@ class ProductsIndexContainer extends Component {
   render (){
     let products = this.state.products.map(product => {
       return (
-        <ProductTileComponent
+        <ProductTile
           key = {product.id}
           id={product.id}
           name={product.name}

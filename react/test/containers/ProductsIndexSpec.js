@@ -1,5 +1,5 @@
 import ProductsIndexContainer from '../../src/containers/ProductsIndexContainer';
-import ProductTileComponent from '../../src/components/ProductTileComponent'
+import ProductTile from '../../src/components/ProductTile'
 
 describe('ProductsIndexContainer', () => {
   let wrapper;
@@ -18,7 +18,7 @@ describe('ProductsIndexContainer', () => {
       name: 'skeleton',
       image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/Human-Skeleton.jpg/220px-Human-Skeleton.jpg'
     }]})
-    expect(wrapper.find(ProductTileComponent)).toBePresent();
+    expect(wrapper.find(ProductTile)).toBePresent();
   })
 
 })

@@ -10,7 +10,6 @@ gem 'pry'
 gem 'simple_form'
 gem 'devise'
 
-
 group :development do
   gem 'listen', '~> 3.0.5'
   gem 'spring'
@@ -28,6 +27,7 @@ group :development, :test do
   gem 'pry-rails'
   gem 'rspec-rails', '~> 3.5'
   gem 'shoulda'
+  gem 'rails-controller-testing'
   gem 'valid_attribute'
   gem 'shoulda-matchers', require: false
 end
