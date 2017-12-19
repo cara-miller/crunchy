@@ -10,6 +10,11 @@
 #   inflect.uncountable %w( fish sheep )
 # end
 
+ActiveSupport::Inflector.inflections do |inflect|
+  inflect.irregular 'supply', 'supplies'
+  inflect.irregular 'supply_from_suppliers', 'supplies_from_suppliers'
+end
+
 # These inflection rules are supported but not enabled by default:
 # ActiveSupport::Inflector.inflections(:en) do |inflect|
 #   inflect.acronym 'RESTful'
