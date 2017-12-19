@@ -1,12 +1,12 @@
-import ProductTileComponent from '../../src/components/ProductTileComponent';
+import ProductTile from '../../src/components/ProductTile';
 
-describe('ProductTileComponent', () =>{
+describe('ProductTile', () =>{
   let wrapper,
       imageUrl;
 
   beforeEach(()=>{
     wrapper = mount(
-      <ProductTileComponent
+      <ProductTile
         name="elephant"
         image='http://fakeurl.com/elephant'
       />
