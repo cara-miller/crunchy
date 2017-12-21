@@ -2,9 +2,10 @@ Rails.application.routes.draw do
   devise_for :users
   root 'homes#index'
 
-  resources :supplies, only: [:show]
+  resources :supplies, only: [:index, :show]
   resources :homes, only: [:index]
   resources :products, only: [:index, :show, :new, :create]
+  resources :supply_categories, only: [:index, :show,  :new, :create]
 
   namespace :api do
     namespace :v1 do

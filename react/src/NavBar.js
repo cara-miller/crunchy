@@ -4,14 +4,14 @@ import { Link } from 'react-router';
 
 const NavBar = props =>{
   return(
-    <div>
+  <div>
     <div id='billboard' className='row'>
       <a href="../"><h1 className="menu-text">Crunchify</h1></a>
         <div className="menu">
           <a href="../products">Products</a>
         </div>
         <div className="menu">
-          <a href="../supplies">Supplies</a>
+          <a href="../supply_categories">Supplies</a>
         </div>
         <div className="menu">
           <a href="../suppliers">Suppliers</a>
@@ -21,7 +21,7 @@ const NavBar = props =>{
         </div>
       </div>
       {props.children}
-      </div>
+    </div>
   )
 }
 
