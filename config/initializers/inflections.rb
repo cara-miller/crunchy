@@ -12,7 +12,7 @@
 
 ActiveSupport::Inflector.inflections do |inflect|
   inflect.irregular 'supply', 'supplies'
-  inflect.irregular 'supply_from_suppliers', 'supplies_from_suppliers'
+  inflect.irregular 'supply_category', 'supply_categories'
 end
 
 # These inflection rules are supported but not enabled by default:

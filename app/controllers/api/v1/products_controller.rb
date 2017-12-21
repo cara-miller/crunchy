@@ -9,14 +9,14 @@ class Api::V1::ProductsController < ApiController
     render json: Product.find(params[:id])
   end
 
-  def create
-    venue = Product.new(product_params)
-    if venue.save
-      render json: venue
-    else
-      render json: { error: venue.errors.full_messages }, status: :unprocessable_entity
-    end
-  end
+  # def create
+  #   product = Product.new(product_params)
+  #   if product.save
+  #     render json: product
+  #   else
+  #     render json: { error: product.errors.full_messages }, status: :unprocessable_entity
+  #   end
+  # end
 
   private
   def product_params

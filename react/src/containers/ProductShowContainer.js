@@ -39,8 +39,8 @@ class ProductShowContainer extends Component {
     return(
       <div>
         <h3 id="showtitle">{this.state.product.name}</h3>
-        <div id="info2">{`Retail Price: ${this.state.product.retail_price}`}</div>
-        <h5 id="showtitle">Supplies:</h5> <h5 id="showtitle">Labor:</h5>
+        <p>{`Retail Price: $${this.state.product.retail_price}`}</p>
+        <p>Supplies:</p> <p>Labor:</p>
       </div>
     );
   }

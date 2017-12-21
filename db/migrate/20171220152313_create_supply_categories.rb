@@ -1,6 +1,6 @@
-class CreateSupplies < ActiveRecord::Migration[5.1]
+class CreateSupplyCategories < ActiveRecord::Migration[5.1]
   def change
-    create_table :supplies do |t|
+    create_table :supply_categories do |t|
       t.string :name, null: false
       t.string :description
 

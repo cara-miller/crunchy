@@ -1,8 +1,8 @@
 require 'spec_helper'
 require 'rails_helper'
-require_relative '../../app/models/supplier'
+require_relative '../../app/models/supply'
 
-describe SupplyFromSupplier do
+describe Supply do
   it { should have_valid(:supply_id).when(1) }
   it { should_not have_valid(:supply_id).when(nil, '') }
 
