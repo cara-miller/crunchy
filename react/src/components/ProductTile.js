@@ -15,5 +15,4 @@ const ProductTile = props =>{
     </div>
   );
 };
-
 export default ProductTile;
