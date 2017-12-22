@@ -1,12 +1,16 @@
 class Api::V1::ProductsController < ApiController
 
   def index
-    products = Product.all
-    render json: products
+    render json: Product.all
   end
 
   def show
-    render json: Product.find(params[:id])
+    @product = Product.find(params[:id])
+    render json: {
+    product: @product,
+    supplies: @product.supplies,
+    productSupplies: @product.productsupplies
+    }
   end
 
   # def create

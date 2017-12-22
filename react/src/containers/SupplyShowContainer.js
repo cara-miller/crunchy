@@ -6,9 +6,7 @@ class SupplyShowContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      supply: {},
-      supplyCategory: {},
-      supplier: {}
+      supply: {}
     };
     this.getSupply = this.getSupply.bind(this);
   }
@@ -29,9 +27,7 @@ class SupplyShowContainer extends Component {
     .then(response => response.json())
     .then(body => {
       this.setState({
-       supply: body.supply,
-       supplyCategory: body.supply_category,
-       supplier: body.supplier
+       supply: body.supply
       })
     })
     .catch(error => console.error(`Error in fetch: ${error.message}`));
@@ -51,8 +47,7 @@ class SupplyShowContainer extends Component {
           quantity={this.state.supply.sold_in_quantity}
           unit={this.state.supply.unit_of_measurement}
           productCode={this.state.supply.product_code}
-          name={this.state.supplyCategory.name}
-          supplier={this.state.supplier.name}
+          name={this.state.supply.name}
         />
       </div>
     );

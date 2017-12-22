@@ -7,9 +7,7 @@ class Api::V1::SuppliesController < ApiController
   def show
     @supply = Supply.find(params[:id])
       render json: {
-        supply: @supply,
-        supply_category: @supply.supply_category,
-        supplier: @supply.supplier
+        supply: @supply
       }
   end
 
