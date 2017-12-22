@@ -6,7 +6,7 @@ class SuppliesIndexContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      supplyCategories: []
+      supplies: []
     }
   }
 
@@ -24,7 +24,7 @@ class SuppliesIndexContainer extends Component {
     .then(response => response.json())
     .then(body => {
       this.setState({
-        supplyCategories: body.supply_categories
+        supplies: body.supplies
       })
     })
     .catch(error => console.error(`Error in fetch: ${error.message}`));

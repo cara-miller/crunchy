@@ -6,7 +6,9 @@ class ProductsIndexContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      products: []
+      products: [],
+      supplies: [],
+      productsupplies: []
     }
   }
 
@@ -24,7 +26,7 @@ class ProductsIndexContainer extends Component {
     .then(response => response.json())
     .then(body => {
       this.setState({
-        products: body
+        products: body.products
       })
     })
     .catch(error => console.error(`Error in fetch: ${error.message}`));
@@ -50,7 +52,6 @@ class ProductsIndexContainer extends Component {
       </div>
     )
   }
-
 }
 
 export default ProductsIndexContainer;
