@@ -6,8 +6,9 @@ const ProductSupplyTile = props =>{
     <div className="rows">
       <div id="post-module" className="small-12 medium-4 columns">
         <h5>{props.name}</h5>
-        <p><b>Quantity used in product:</b> {props.quantity}</p>
-        <p><b>Total Cost of this supply: </b> ${props.cost}</p>
+        <p>Quantity used in product: {props.quantity}</p>
+        <p>Cost Per Piece:  ${props.costPerPiece}</p>
+        <p>Total cost of this supply for this product: ${props.supplyCost}</p>
       </div>
     </div>
   );

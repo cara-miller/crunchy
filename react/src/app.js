@@ -4,8 +4,6 @@ import Layout from './components/Layout';
 import ProductTile from './components/ProductTile'
 import ProductsIndexContainer from './containers/ProductsIndexContainer'
 import ProductShowContainer from './containers/ProductShowContainer'
-import SupplyShowContainer from './containers/SupplyShowContainer'
-import SuppliesIndexContainer from './containers/SuppliesIndexContainer'
 import NavBar from './NavBar'
 import Home from './Home'
 
@@ -17,8 +15,6 @@ const App = props => {
           <IndexRoute component={Home}/>
           <Route path='/products' component={ProductsIndexContainer}/>
           <Route path='/products/:id' component={ProductShowContainer}/>
-          <Route path='/supplies/:id' component={SupplyShowContainer}/>
-          <Route path='/supply_categories' component={SuppliesIndexContainer}/>
         </Route>
       </Router>
     </div>

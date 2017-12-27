@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import ProductTile from "../components/ProductTile";
 import ProductSupplyTile from "../components/ProductSupplyTile"
+import ProductLaborTile from "../components/ProductLaborTile"
 import { Route, IndexRoute, Link, Router, browserHistory } from 'react-router';
 
 class ProductShowContainer extends Component {
@@ -9,7 +10,10 @@ class ProductShowContainer extends Component {
     this.state = {
       product: {},
       supplies: [],
-      productSupplies: []
+      productSupplies: [],
+      labors: [],
+      productLabors: [],
+      laborCost: null
     };
     this.getProduct = this.getProduct.bind(this);
   }
@@ -31,7 +35,9 @@ class ProductShowContainer extends Component {
       this.setState({
        product: body.product,
        supplies: body.supplies,
-       productSupplies: body.productSupplies
+       productSupplies: body.productSupplies,
+       labors: body.labors,
+       productLabors: body.productLabors
       })
     })
     .catch(error => console.error(`Error in fetch: ${error.message}`));
@@ -41,28 +47,47 @@ class ProductShowContainer extends Component {
     this.getProduct();
   }
 
+
   render () {
-    const{product, supplies, productSupplies} = this.state
-    let supplyTiles
+    const{product, supplies, productSupplies, labors, productLabors} = this.state;
+    let supplyTiles;
+    let laborTiles;
+    let laborCost;
+    let supplyCost;
     supplyTiles = supplies.map((supply, i) => {
+      supplyCost = ((productSupplies[i].quantity)*(productSupplies[i].cost/100))
       return(
         <ProductSupplyTile
           key={supply.id}
           id={supply.id}
           name={supply.name}
-          cost={productSupplies[i].cost/100}
+          costPerPiece={productSupplies[i].cost/100}
           quantity={productSupplies[i].quantity}
+          supplyCost={supplyCost}
         />
       )
-    })
-
+    });
+      laborTiles = labors.map((labor, i) => {
+        laborCost = ((labor.cost_per_hour/100)/60) * (productLabors[i].time_per_job)
+        return(
+          <ProductLaborTile
+            key={labor.id}
+            id={labor.id}
+            title={labor.description}
+            hourlyWage={labor.cost_per_hour/100}
+            minutesPerJob={productLabors[i].time_per_job}
+            costForThisJob={laborCost}
+          />
+        )
+      });
     return(
       <div>
         <h2><b>{product.name}</b></h2>
-        <p><h5>{`Retail Price: $${product.retail_price/100}`}</h5></p>
+        <h5>{`Retail Price: $${product.retail_price/100}`}</h5>
         <h3>Supplies:</h3>
           {supplyTiles}
         <h3>Labor:</h3>
+          {laborTiles}
       </div>
     )
   }
