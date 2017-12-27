@@ -1,9 +1,11 @@
 class ProductSerializer < ActiveModel::Serializer
-  attributes :id,
-            :name,
+  attributes :name,
+            :id,
             :retail_price,
             :profit_margin,
             :image,
             :supplies,
-            :productsupplies
+            :productsupplies,
+            :labors,
+            :productlabors
 end

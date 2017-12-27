@@ -5,13 +5,13 @@ Rails.application.routes.draw do
   resources :supplies, only: [:index, :show]
   resources :homes, only: [:index]
   resources :products, only: [:index, :show, :new, :create]
-  resources :supply_categories, only: [:index, :show,  :new, :create]
+  resources :labors, only: [:index, :show,  :new, :create]
 
   namespace :api do
     namespace :v1 do
       resources :products, only: [:index, :show, :new, :create]
       resources :supplies, only: [:index, :show, :new, :create]
-      resources :supply_categories, only: [:index, :show,  :new, :create]
+      resources :labors, only: [:index, :show,  :new, :create]
     end
   end
 end

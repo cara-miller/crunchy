@@ -11,12 +11,6 @@ const NavBar = props =>{
           <a href="../products">Products</a>
         </div>
         <div className="menu">
-          <a href="../supply_categories">Supplies</a>
-        </div>
-        <div className="menu">
-          <a href="../suppliers">Suppliers</a>
-        </div>
-        <div className="menu">
           <a href="../labor">Labor</a>
         </div>
       </div>

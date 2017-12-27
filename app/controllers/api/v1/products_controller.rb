@@ -9,7 +9,9 @@ class Api::V1::ProductsController < ApiController
     render json: {
     product: @product,
     supplies: @product.supplies,
-    productSupplies: @product.productsupplies
+    productSupplies: @product.productsupplies,
+    labors: @product.labors,
+    productLabors: @product.productlabors
     }
   end
 

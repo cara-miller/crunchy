@@ -8,6 +8,9 @@
 Product.destroy_all
 Supply.destroy_all
 Productsupply.destroy_all
+Labor.destroy_all
+Productlabor.destroy_all
+
 
 purse = Product.create(name: "Small Brown Leather Purse", retail_price: 5500, image: "https://img0.etsystatic.com/153/0/12844026/il_570xN.1160217064_e8j0.jpg" )
 harness = Product.create(name: "Black Latex Harness", retail_price: 15000, image: "https://img1.etsystatic.com/131/1/12554957/il_570xN.923283661_jcox.jpg")
@@ -18,31 +21,43 @@ wallet = Product.create(
   )
 
 
-supply = Supply.create(
+strap = Supply.create(
   name: "black strap",
   sold_in_quantity: 12,
   unit_of_measurement: "feet",
   cost: 400)
 
-supply2 = Supply.create(
+buckle = Supply.create(
   name: "buckle",
   sold_in_quantity: 20,
   unit_of_measurement: "units",
   cost: 600)
 
-productsupply1 = Productsupply.create(
+harnessstrap = Productsupply.create(
   product: harness,
   product_id: harness.id,
-  supply: supply,
-  supply_id: supply.id,
+  supply: strap,
+  supply_id: strap.id,
   quantity: 3,
-  cost: 100
-)
-productsupply1 = Productsupply.create(
+  cost: 100)
+
+harnessbuckle = Productsupply.create(
   product: harness,
   product_id: harness.id,
-  supply: supply2,
-  supply_id: supply2.id,
+  supply: buckle,
+  supply_id: buckle.id,
   quantity: 5,
-  cost: 150
+  cost: 150)
+
+attachingbuckles = Labor.create(
+  description: "attaching buckles",
+  cost_per_hour: 1200)
+
+attachingharnessbuckles = Productlabor.create(
+  product: harness,
+  product_id: harness.id,
+  labor:attachingbuckles,
+  labor_id: attachingbuckles.id,
+  time_per_job: 10,
+  cost_for_this_job: (((1200 * 10)/100)/60)
 )

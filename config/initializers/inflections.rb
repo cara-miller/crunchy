@@ -12,10 +12,6 @@
 
 ActiveSupport::Inflector.inflections do |inflect|
   inflect.irregular 'supply', 'supplies'
-  inflect.irregular 'supply_category', 'supply_categories'
-  inflect.irregular 'SupplyCategory', 'SupplyCategories'
-  inflect.irregular 'Supply Category', 'Supply Categories'
-  inflect.irregular 'supply category', 'supply categories'
 end
 
 # These inflection rules are supported but not enabled by default:
