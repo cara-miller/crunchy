@@ -12,6 +12,7 @@ Rails.application.routes.draw do
       resources :products, only: [:index, :show, :new, :create]
       resources :supplies, only: [:index, :show, :new, :create]
       resources :labors, only: [:index, :show,  :new, :create]
+      resources :productsupplies, only: [:index, :create]
     end
   end
 end

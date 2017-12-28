@@ -39,7 +39,7 @@ harnessstrap = Productsupply.create(
   supply: strap,
   supply_id: strap.id,
   quantity: 3,
-  cost: 100)
+  productsupplycost: 100)
 
 harnessbuckle = Productsupply.create(
   product: harness,
@@ -47,7 +47,7 @@ harnessbuckle = Productsupply.create(
   supply: buckle,
   supply_id: buckle.id,
   quantity: 5,
-  cost: 150)
+  productsupplycost: 150)
 
 attachingbuckles = Labor.create(
   description: "attaching buckles",

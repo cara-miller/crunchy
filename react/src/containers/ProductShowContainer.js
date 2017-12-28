@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import ProductTile from "../components/ProductTile";
 import ProductSupplyTile from "../components/ProductSupplyTile"
 import ProductLaborTile from "../components/ProductLaborTile"
+import AddSupplyToProduct from "../components/AddSupplyToProduct"
+import SupplyFormContainer from "./SupplyFormContainer"
 import { Route, IndexRoute, Link, Router, browserHistory } from 'react-router';
 
 class ProductShowContainer extends Component {
@@ -55,13 +57,13 @@ class ProductShowContainer extends Component {
     let laborCost;
     let supplyCost;
     supplyTiles = supplies.map((supply, i) => {
-      supplyCost = ((productSupplies[i].quantity)*(productSupplies[i].cost/100))
+      supplyCost = ((productSupplies[i].quantity)*(productSupplies[i].productsupplycost/100))
       return(
         <ProductSupplyTile
           key={supply.id}
           id={supply.id}
           name={supply.name}
-          costPerPiece={productSupplies[i].cost/100}
+          costPerPiece={productSupplies[i].productsupplycost/100}
           quantity={productSupplies[i].quantity}
           supplyCost={supplyCost}
         />
@@ -84,10 +86,22 @@ class ProductShowContainer extends Component {
       <div>
         <h2><b>{product.name}</b></h2>
         <h5>{`Retail Price: $${product.retail_price/100}`}</h5>
-        <h3>Supplies:</h3>
-          {supplyTiles}
-        <h3>Labor:</h3>
-          {laborTiles}
+        <div className="row">
+          <div className="column">
+            <h3>Supplies:</h3>
+              <AddSupplyToProduct
+                product_id={product.id}
+                supplies={supplies}
+              />
+            {supplyTiles}
+          </div>
+          <div className="column">
+            <h3>Labor:</h3>
+            <button id='add' className="button">Add Labor</button>
+            {laborTiles}
+          </div>
+        </div>
+
       </div>
     )
   }

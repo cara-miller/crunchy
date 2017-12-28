@@ -4,7 +4,7 @@ import { browserHistory, Link } from 'react-router';
 const ProductSupplyTile = props =>{
   return(
     <div className="rows">
-      <div id="post-module" className="small-12 medium-4 columns">
+      <div id="post-module" className="small-15 medium-5 columns">
         <h5>{props.name}</h5>
         <p>Quantity used in product: {props.quantity}</p>
         <p>Cost Per Piece:  ${props.costPerPiece}</p>
