@@ -4,6 +4,7 @@ import ProductSupplyTile from "../components/ProductSupplyTile"
 import ProductLaborTile from "../components/ProductLaborTile"
 import AddSupplyToProduct from "../components/AddSupplyToProduct"
 import SupplyFormContainer from "./SupplyFormContainer"
+import AddLaborToProduct from "../components/AddLaborToProduct"
 import { Route, IndexRoute, Link, Router, browserHistory } from 'react-router';
 
 class ProductShowContainer extends Component {
@@ -49,6 +50,15 @@ class ProductShowContainer extends Component {
     this.getProduct();
   }
 
+  // const{labors} = this.state;
+  // let laborCosts;
+  // let calculation;
+  //
+  // laborCosts = labors.map((labor) => {
+  //   if (labor.id == this.state.labor_id){
+  //     calculation = (labor.cost_per_hour * this.state.time_per_job)
+  //     }
+  // })
 
   render () {
     const{product, supplies, productSupplies, labors, productLabors} = this.state;
@@ -66,6 +76,7 @@ class ProductShowContainer extends Component {
           costPerPiece={productSupplies[i].productsupplycost/100}
           quantity={productSupplies[i].quantity}
           supplyCost={supplyCost}
+          unit={supply.unit_of_measurement}
         />
       )
     });
@@ -92,12 +103,17 @@ class ProductShowContainer extends Component {
               <AddSupplyToProduct
                 product_id={product.id}
                 supplies={supplies}
+                getProduct={this.getProduct}
               />
             {supplyTiles}
           </div>
           <div className="column">
             <h3>Labor:</h3>
-            <button id='add' className="button">Add Labor</button>
+            <AddLaborToProduct
+              product_id={product.id}
+              labors={labors}
+              getProduct={this.getProduct}
+            />
             {laborTiles}
           </div>
         </div>

@@ -13,30 +13,29 @@ const customStyles = {
   }
 };
 
-class SupplyFormContainer extends Component {
+class ProductFormContainer extends Component {
 
   constructor(props) {
     super(props);
     this.state = {
       name: '',
-      supplies: [],
+      products: [],
       modalIsOpen: false,
-      sold_in_quantity: '',
-      unit_of_measurement: '',
-      cost: ''
+      retail_price: '',
+      profit_margin: ''
     }
     this.handleOpenModal = this.handleOpenModal.bind(this);
     this.handleCloseModal = this.handleCloseModal.bind(this);
-    this.handleSupplyFormSubmit = this.handleSupplyFormSubmit.bind(this);
+    this.handleProductFormSubmit = this.handleProductFormSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
   }
 
-//Supply Form Methods
-  newSupply(supplyPayload) {
-    fetch('/api/v1/supplies', {
+//Product Form Methods
+  newProduct(productPayload) {
+    fetch('/api/v1/products', {
       credentials: 'same-origin',
       method: 'POST',
-      body: JSON.stringify(supplyPayload),
+      body: JSON.stringify(productPayload),
       headers: { 'Content-Type': 'application/json' }
     })
     .then(response => {
@@ -50,23 +49,19 @@ class SupplyFormContainer extends Component {
     })
     .then(response => response.json())
     .then(body => {
-      this.handleCloseModal()
-      this.setState({
-        supplies: body
-      })
+      this.props.getProducts()
     })
     .catch(error => console.error(`Error in fetch: ${error.message}`));
   }
 
-  handleSupplyFormSubmit(event) {
+  handleProductFormSubmit(event) {
     event.preventDefault();
-    let supplyPayload = {
+    let productPayload = {
       name: this.state.name,
-      sold_in_quantity: this.state.sold_in_quantity,
-      unit_of_measurement: this.state.unit_of_measurement,
-      cost: this.state.cost,
+      retail_price: this.state.retail_price,
+      profit_margin: this.state.profit_margin,
     }
-    this.newSupply(supplyPayload);
+    this.newProduct(productPayload);
     this.handleCloseModal();
   }
 
@@ -78,9 +73,8 @@ class SupplyFormContainer extends Component {
   handleCloseModal () {
     this.setState({
       name: '',
-      sold_in_quantity: '',
-      unit_of_measurement: '',
-      cost: '',
+      retail_price: '',
+      profit_margin: '',
       showModal: false
      });
   }
@@ -96,25 +90,23 @@ class SupplyFormContainer extends Component {
 //Render
  render() {
    let form;
-   form = <form id='form' onSubmit={this.handleSupplyFormSubmit}>
-     <h5>Add a Supply</h5>
+   form = <form id='form' onSubmit={this.handleProductFormSubmit}>
+     <h5>Add a Product</h5>
      <label>
-       Supply Name:
+       Product Name:
        <input value={this.state.name} onChange={this.handleChange} name='name' type='text' placeholder='material'/>
      </label>
      <label>
-       This supply is sold in sets of:
-       <input value={this.state.sold_in_quantity} onChange={this.handleChange} name='sold_in_quantity' type='text' placeholder='quantity'/>
-       <input value={this.state.unit_of_measurement} onChange={this.handleChange} name='unit_of_measurement' type='text' placeholder='unit of measurement'/>
+       Sale Price:
+       <input value={this.state.retail_price} onChange={this.handleChange} name='retail_price' type='text' placeholder='quantity'/>
      </label>
-        For the price:
-        <input value={this.state.cost} onChange={this.handleChange} name='cost' type='text' placeholder='price'/>
-     <button type="submit" className="button" onClick={this.handleSupplyFormSubmit}>Submit</button>
+
+     <button type="submit" className="button" onClick={this.handleProductFormSubmit}>Submit</button>
   </form>
 
     return(
       <div>
-        <button id='add' className="topbutton" onClick={this.handleOpenModal}>Create New Supply</button>
+        <button id='add' className="topbutton" onClick={this.handleOpenModal}>Create New Product</button>
        <Modal
           isOpen={this.state.showModal}
           contentLabel="Minimal Modal Example"
@@ -128,4 +120,4 @@ class SupplyFormContainer extends Component {
   }
 }
 
-export default SupplyFormContainer;
+export default ProductFormContainer;

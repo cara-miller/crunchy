@@ -13,6 +13,7 @@ Rails.application.routes.draw do
       resources :supplies, only: [:index, :show, :new, :create]
       resources :labors, only: [:index, :show,  :new, :create]
       resources :productsupplies, only: [:index, :create]
+      resources :productlabors, only: [:index, :create]
     end
   end
 end
