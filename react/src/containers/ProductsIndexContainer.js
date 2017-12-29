@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import ProductTile from "../components/ProductTile"
 import { Route, IndexRoute, Router, browserHistory, Link, Redirect } from 'react-router';
+import ProductFormContainer from "./ProductFormContainer"
+
 
 class ProductsIndexContainer extends Component {
   constructor(props) {
@@ -10,9 +12,14 @@ class ProductsIndexContainer extends Component {
       supplies: [],
       productsupplies: []
     }
+    this.getProducts = this.getProducts.bind(this);
   }
 
   componentDidMount () {
+    this.getProducts();
+  }
+
+  getProducts(){
     fetch('/api/v1/products')
     .then(response => {
       if (response.ok) {
@@ -48,6 +55,9 @@ class ProductsIndexContainer extends Component {
     return(
       <div>
         <h1>All Products</h1>
+        <ProductFormContainer
+          getProducts = {this.getProducts}
+        />
         {products}
       </div>
     )

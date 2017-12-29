@@ -13,30 +13,28 @@ const customStyles = {
   }
 };
 
-class SupplyFormContainer extends Component {
+class LaborFormContainer extends Component {
 
   constructor(props) {
     super(props);
     this.state = {
-      name: '',
-      supplies: [],
+      labors: [],
       modalIsOpen: false,
-      sold_in_quantity: '',
-      unit_of_measurement: '',
-      cost: ''
+      description: '',
+      cost_per_hour: ''
     }
     this.handleOpenModal = this.handleOpenModal.bind(this);
     this.handleCloseModal = this.handleCloseModal.bind(this);
-    this.handleSupplyFormSubmit = this.handleSupplyFormSubmit.bind(this);
+    this.handleLaborFormSubmit = this.handleLaborFormSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
   }
 
-//Supply Form Methods
-  newSupply(supplyPayload) {
-    fetch('/api/v1/supplies', {
+//Labor Form Methods
+  newLabor(laborPayload) {
+    fetch('/api/v1/labors', {
       credentials: 'same-origin',
       method: 'POST',
-      body: JSON.stringify(supplyPayload),
+      body: JSON.stringify(laborPayload),
       headers: { 'Content-Type': 'application/json' }
     })
     .then(response => {
@@ -52,21 +50,20 @@ class SupplyFormContainer extends Component {
     .then(body => {
       this.handleCloseModal()
       this.setState({
-        supplies: body
+        labors: body
       })
     })
     .catch(error => console.error(`Error in fetch: ${error.message}`));
   }
 
-  handleSupplyFormSubmit(event) {
+  handleLaborFormSubmit(event) {
     event.preventDefault();
-    let supplyPayload = {
-      name: this.state.name,
-      sold_in_quantity: this.state.sold_in_quantity,
-      unit_of_measurement: this.state.unit_of_measurement,
-      cost: this.state.cost,
+    let laborPayload = {
+      description: this.state.description,
+      cost_per_hour: +this.state.cost_per_hour
     }
-    this.newSupply(supplyPayload);
+
+    this.newLabor(laborPayload);
     this.handleCloseModal();
   }
 
@@ -77,10 +74,8 @@ class SupplyFormContainer extends Component {
 }
   handleCloseModal () {
     this.setState({
-      name: '',
-      sold_in_quantity: '',
-      unit_of_measurement: '',
-      cost: '',
+      description: '',
+      cost_per_hour: '',
       showModal: false
      });
   }
@@ -96,25 +91,23 @@ class SupplyFormContainer extends Component {
 //Render
  render() {
    let form;
-   form = <form id='form' onSubmit={this.handleSupplyFormSubmit}>
-     <h5>Add a Supply</h5>
+   form = <form id='form' onSubmit={this.handleLaborFormSubmit}>
+     <h5>Add a Labor Type</h5>
      <label>
-       Supply Name:
-       <input value={this.state.name} onChange={this.handleChange} name='name' type='text' placeholder='material'/>
+       Labor Description:
+       <input value={this.state.description} onChange={this.handleChange} name='description' type='text' placeholder='Job Name'/>
      </label>
      <label>
-       This supply is sold in sets of:
-       <input value={this.state.sold_in_quantity} onChange={this.handleChange} name='sold_in_quantity' type='text' placeholder='quantity'/>
-       <input value={this.state.unit_of_measurement} onChange={this.handleChange} name='unit_of_measurement' type='text' placeholder='unit of measurement'/>
+       Hourly Wage:
+       <input value={this.state.cost_per_hour} onChange={this.handleChange} name='cost_per_hour' type='text' placeholder='wage'/>
      </label>
-        For the price:
-        <input value={this.state.cost} onChange={this.handleChange} name='cost' type='text' placeholder='price'/>
-     <button type="submit" className="button" onClick={this.handleSupplyFormSubmit}>Submit</button>
+
+     <button type="submit" className="button" onClick={this.handleLaborFormSubmit}>Submit</button>
   </form>
 
     return(
       <div>
-        <button id='add' className="topbutton" onClick={this.handleOpenModal}>Create New Supply</button>
+        <button id='add' className="topbutton" onClick={this.handleOpenModal}>Create New Labor</button>
        <Modal
           isOpen={this.state.showModal}
           contentLabel="Minimal Modal Example"
@@ -128,4 +121,4 @@ class SupplyFormContainer extends Component {
   }
 }
 
-export default SupplyFormContainer;
+export default LaborFormContainer;

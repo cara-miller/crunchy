@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import Modal from 'react-modal';
-import SupplyDropDown from './SupplyDropDown'
+import LaborDropDown from './LaborDropDown'
 
 const customStyles = {
   content : {
@@ -14,30 +14,31 @@ const customStyles = {
   }
 };
 
-class AddSupplyToProduct extends Component {
+class AddLaborToProduct extends Component {
   constructor(props) {
     super(props);
     this.state = {
       modalIsOpen: false,
-      productSupplies:[],
-      quantity: '',
-      productsupplycost: '',
-      supply_id: 0
+      productlabors:[],
+      time_per_job: '',
+      cost_for_this_job: '',
+      labor_id: 0,
+      labors: []
     };
     this.handleOpenModal = this.handleOpenModal.bind(this);
     this.handleCloseModal = this.handleCloseModal.bind(this);
     this.handleFormSubmit = this.handleFormSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
-    this.setSupplyId = this.setSupplyId.bind(this);
+    this.setLaborId = this.setLaborId.bind(this);
   }
 
-  // Productsupply Form Methods
+  // Productlabor Form Methods
 
-    newProductsupply(productsupplyPayload) {
-      fetch('/api/v1/productsupplies', {
+    newProductlabor(productlaborPayload) {
+      fetch('/api/v1/productlabors', {
         credentials: 'same-origin',
         method: 'POST',
-        body: JSON.stringify(productsupplyPayload),
+        body: JSON.stringify(productlaborPayload),
         headers: { 'Content-Type': 'application/json' }
       })
       .then(response => {
@@ -59,13 +60,13 @@ class AddSupplyToProduct extends Component {
 
     handleFormSubmit(event){
       event.preventDefault();
-      let productsupplyPayload = {
-        quantity: this.state.quantity,
-        supply_id: this.state.supply_id,
+      let productlaborPayload = {
+        time_per_job: this.state.time_per_job,
+        labor_id: this.state.labor_id,
         product_id: this.props.product_id,
-        productsupplycost: this.state.productsupplycost
+        cost_for_this_job: this.state.cost_for_this_job
       }
-      this.newProductsupply(productsupplyPayload);
+      this.newProductlabor(productlaborPayload);
       this.handleCloseModal();
     }
 
@@ -76,16 +77,15 @@ class AddSupplyToProduct extends Component {
     }
       handleCloseModal () {
         this.setState({
-          name: '',
-          quantity: '',
-          productsupplycost: '',
+          time_per_job: '',
+          cost_for_this_job: '',
           showModal: false
          });
       }
 
     //Misc Functions
 
-    setSupplyId(supply){ this.setState({  supply_id: supply.value }) }
+    setLaborId(labor){ this.setState({  labor_id: labor.value }) }
 
        handleChange(event) {
          let value = event.target.value;
@@ -95,28 +95,25 @@ class AddSupplyToProduct extends Component {
 
 
   render() {
-    let setSupplyId = (supply) => {this.setSupplyId(supply)}
+    let setLaborId = (labor) => {this.setLaborId(labor)}
     let form;
     form = <form onSubmit={this.handleFormSubmit}>
-      <h2>Add a Supply to this Product</h2>
+      <h2>Add Production to this Product</h2>
       <label>
-      Select a Supply:
-      <SupplyDropDown
-        setSupplyId = {setSupplyId}
+      Select a Labor Type:
+      <LaborDropDown
+        setLaborId = {setLaborId}
       />
-      Amount used in this product:
-      <input value={this.state.quantity} onChange={this.handleChange} name='quantity' type='text' placeholder='quantity'/>
+      Approximate time (in minutes) to complete this task for this product:
+      <input value={this.state.time_per_job} onChange={this.handleChange} name='time_per_job' type='text' placeholder='number of minutes'/>
        </label>
-       <label>
-      For the price:
-      <input value={this.state.productsupplycost} onChange={this.handleChange} name='productsupplycost' type='text' placeholder='price'/>
-       </label>
+
       <button type="submit" onClick={this.props.handleFormSubmit}>Submit</button>
     </form>
 
     return (
       <div>
-        <button id='add' className="button" onClick={this.handleOpenModal}>Add Supply to Product</button>
+        <button id='add' className="button" onClick={this.handleOpenModal}>Add Production to Product</button>
         <Modal
            isOpen={this.state.showModal}
            contentLabel="Minimal Modal Example"
@@ -130,4 +127,4 @@ class AddSupplyToProduct extends Component {
   }
  }
 
-export default AddSupplyToProduct;
+export default AddLaborToProduct;

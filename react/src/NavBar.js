@@ -1,5 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router';
+import SupplyFormContainer from "./containers/SupplyFormContainer"
+import LaborFormContainer from "./containers/LaborFormContainer"
 // import SearchBar from './components/SearchBar';
 
 const NavBar = props =>{
@@ -7,12 +9,12 @@ const NavBar = props =>{
   <div>
     <div id='billboard' className='row'>
       <a href="../"><h1 className="menu-text">Crunchify</h1></a>
-        <div className="menu">
-          <a href="../products">Products</a>
-        </div>
-        <div className="menu">
-          <a href="../labor">Labor</a>
-        </div>
+      <div className="menu">
+        <SupplyFormContainer/>
+      </div>
+      <div className="menu">
+        <LaborFormContainer/>
+      </div>
       </div>
       {props.children}
     </div>

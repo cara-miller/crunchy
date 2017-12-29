@@ -15,14 +15,14 @@ class Api::V1::ProductsController < ApiController
     }
   end
 
-  # def create
-  #   product = Product.new(product_params)
-  #   if product.save
-  #     render json: product
-  #   else
-  #     render json: { error: product.errors.full_messages }, status: :unprocessable_entity
-  #   end
-  # end
+  def create
+    product = Product.new(product_params)
+    if product.save
+      render json: product
+    else
+      render json: { error: product.errors.full_messages }, status: :unprocessable_entity
+    end
+  end
 
   private
   def product_params
