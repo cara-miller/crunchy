@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171227182926) do
+ActiveRecord::Schema.define(version: 20171231141036) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -18,6 +18,7 @@ ActiveRecord::Schema.define(version: 20171227182926) do
   create_table "labors", force: :cascade do |t|
     t.string "description", null: false
     t.integer "cost_per_hour", null: false
+    t.integer "user_id"
   end
 
   create_table "productlabors", force: :cascade do |t|
@@ -25,6 +26,7 @@ ActiveRecord::Schema.define(version: 20171227182926) do
     t.integer "labor_id", null: false
     t.integer "time_per_job", null: false
     t.integer "cost_for_this_job"
+    t.integer "user_id"
   end
 
   create_table "products", force: :cascade do |t|
@@ -34,6 +36,7 @@ ActiveRecord::Schema.define(version: 20171227182926) do
     t.string "image"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "user_id"
   end
 
   create_table "productsupplies", force: :cascade do |t|
@@ -41,6 +44,7 @@ ActiveRecord::Schema.define(version: 20171227182926) do
     t.integer "product_id", null: false
     t.integer "quantity"
     t.integer "productsupplycost"
+    t.integer "user_id"
   end
 
   create_table "supplies", force: :cascade do |t|
@@ -48,6 +52,7 @@ ActiveRecord::Schema.define(version: 20171227182926) do
     t.string "unit_of_measurement", null: false
     t.integer "cost", null: false
     t.string "name", null: false
+    t.integer "user_id"
   end
 
   create_table "users", force: :cascade do |t|

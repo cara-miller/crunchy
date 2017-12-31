@@ -1,4 +1,5 @@
 class Api::V1::ProductlaborsController < ApiController
+  before_action :authenticate_user!
 
   def index
     render json: Productlabor.all

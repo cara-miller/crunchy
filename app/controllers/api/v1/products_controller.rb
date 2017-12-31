@@ -1,24 +1,35 @@
 class Api::V1::ProductsController < ApiController
+  skip_before_action :verify_authenticity_token
+  before_action :authenticate_user!
 
   def index
-    render json: Product.all
+    products = Product.where(user: current_user)
+    render json: {
+      products: products,
+      current_user: current_user
+    }
   end
 
   def show
     @product = Product.find(params[:id])
-    render json: {
-    product: @product,
-    supplies: @product.supplies,
-    productSupplies: @product.productsupplies,
-    labors: @product.labors,
-    productLabors: @product.productlabors
-    }
+    if product.user_id == current_user.id
+      render json: {
+      product: @product,
+      supplies: @product.supplies,
+      productSupplies: @product.productsupplies,
+      labors: @product.labors,
+      productLabors: @product.productlabors
+      }
+    else render json:
+      { error: 'Plant does not exist' },
+        status: 404
+    end
   end
 
   def create
     product = Product.new(product_params)
     if product.save
-      render json: product
+      render json: Product.where(user:current_user)
     else
       render json: { error: product.errors.full_messages }, status: :unprocessable_entity
     end
@@ -30,7 +41,8 @@ class Api::V1::ProductsController < ApiController
       :name,
       :retail_price,
       :profit_margin,
-      :image
+      :image,
+      :user_id
     )
   end
 end

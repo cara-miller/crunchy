@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
-  devise_for :users
   root 'homes#index'
+
+  devise_for :users, controllers: { sessions: "users/sessions"}
 
   resources :supplies, only: [:index, :show]
   resources :homes, only: [:index]
@@ -14,6 +15,7 @@ Rails.application.routes.draw do
       resources :supplies, only: [:index, :show, :new, :create]
       resources :labors, only: [:index, :show,  :new, :create]
       resources :productsupplies, only: [:index, :create, :destroy, :update]
+      resources :users
       resources :productlabors, only: [:index, :create, :destroy, :update]
     end
   end

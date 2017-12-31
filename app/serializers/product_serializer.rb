@@ -7,5 +7,11 @@ class ProductSerializer < ActiveModel::Serializer
             :supplies,
             :productsupplies,
             :labors,
-            :productlabors
+            :productlabors,
+            :user_id,
+            :current_user
+
+  # def current_user
+  #     scope.current_user
+  # end
 end
