@@ -13,16 +13,67 @@
  *= require_tree .
  *= require_self
  */
+p {font-family: Helvetica Neue,Helvetica,Roboto,Arial,sans-serif;}
+
+a {color: #6C6368}
+
  .column {
      float: left;
      width: 50%;
  }
 
- /* Clear floats after the columns */
+ .modal-form {
+
+ }
+
+ {
+   overlay : {
+     position          : 'fixed',
+     top               : 0,
+     left              : 0,
+     right             : 0,
+     bottom            : 0,
+     backgroundColor   : 'rgba(255, 255, 255, 0.75)'
+   },
+   content : {
+     position                   : 'absolute',
+     top                        : '40px',
+     left                       : '40px',
+     right                      : '40px',
+     bottom                     : '40px',
+     border                     : '1px solid #ccc',
+     background                 : '#fff',
+     overflow                   : 'auto',
+     WebkitOverflowScrolling    : 'touch',
+     borderRadius               : '4px',
+     outline                    : 'none',
+     padding                    : '20px'
+
+   }
+ }
+ #tile {
+   background-color:
+   #f2f7fc;
+   border-radius: 8px;
+   margin: 10px;
+   padding: 2px;
+   text-align: center;
+ }
+
+#producttile {
+   border-radius: 8px;
+    background-color: #f2f7fc;
+}
  .row:after {
      content: "";
      display: table;
      clear: both;
+ }
+
+ #productheader {
+   background-color: #f2f7fc;
+   margin: 10px 50px 50px 100px;
+   border-radius: 8px;
  }
 
  .button {
@@ -30,24 +81,34 @@
     border: none;
     border-radius: 8px;
     color: white;
-    padding: 15px 32px;
     text-align: center;
-    text-decoration: none;
-    display: inline-block;
     font-size: 18px;
 }
 
-.topbutton{
-  background-color: #4496E6;
-  /* border: 15px 32px 2px 15px; */
-  border-radius: 8px;
-  color: white;
-  padding: 15px 32px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 18px;
+#select {
+  maxWidth: '60rem'
 }
+/*
+content: {
+        border: '0',
+        borderRadius: '4px',
+        bottom: 'auto',
+        minHeight: '10rem',
+        left: '50%',
+        padding: '2rem',
+        position: 'fixed',
+        right: 'auto',
+        top: '50%',
+        transform: 'translate(-50%,-50%)',
+        minWidth: '20rem',
+        width: '80%',
+        maxWidth: '60rem'
+      } */
+
+/* .childDiv {
+  max-height: 90vh;
+  max-width: 90vw;
+} */
 
 #close {
   float: right;

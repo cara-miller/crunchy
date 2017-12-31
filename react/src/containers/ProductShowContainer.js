@@ -5,6 +5,7 @@ import ProductLaborTile from "../components/ProductLaborTile"
 import AddSupplyToProduct from "../components/AddSupplyToProduct"
 import SupplyFormContainer from "./SupplyFormContainer"
 import AddLaborToProduct from "../components/AddLaborToProduct"
+import ProductCostTile from "../components/ProductCostTile"
 import { Route, IndexRoute, Link, Router, browserHistory } from 'react-router';
 
 class ProductShowContainer extends Component {
@@ -50,15 +51,41 @@ class ProductShowContainer extends Component {
     this.getProduct();
   }
 
-  // const{labors} = this.state;
-  // let laborCosts;
-  // let calculation;
-  //
-  // laborCosts = labors.map((labor) => {
-  //   if (labor.id == this.state.labor_id){
-  //     calculation = (labor.cost_per_hour * this.state.time_per_job)
-  //     }
-  // })
+  //functions for laborTiles and supplyTiles
+
+  deleteLabor(id) {
+    fetch(`/api/v1/productlabors/${id}`, {
+      credentials: 'same-origin',
+      method: 'DELETE',
+      headers: { 'Content-Type': 'application/json' }
+    }).then(response => {
+      if (response.ok) {
+        alert("Labor removed from product")
+      } else {
+        alert("This cannot be deleted")
+      }
+    })
+    .catch(error => console.error(`Error in fetch: ${error.message}`));
+    this.getProduct();
+  }
+
+  deleteSupply(id) {
+    fetch(`/api/v1/productsupplies/${id}`, {
+      credentials: 'same-origin',
+      method: 'DELETE',
+      headers: { 'Content-Type': 'application/json' }
+    }).then(response => {
+      if (response.ok) {
+        alert("Labor removed from product")
+      } else {
+        alert("This cannot be deleted")
+      }
+    })
+    .catch(error => console.error(`Error in fetch: ${error.message}`));
+    this.getProduct();
+  }
+
+  //render
 
   render () {
     const{product, supplies, productSupplies, labors, productLabors} = this.state;
@@ -66,58 +93,89 @@ class ProductShowContainer extends Component {
     let laborTiles;
     let laborCost;
     let supplyCost;
-    supplyTiles = supplies.map((supply, i) => {
-      supplyCost = ((productSupplies[i].quantity)*(productSupplies[i].productsupplycost/100))
+    let supplyobj;
+    let costPerPiece;
+    let laborobj;
+    let totalsuppliesCost = 0;
+    let totallaborCost = 0;
+
+    supplyTiles = productSupplies.map((productsupply) => {
+      supplies.forEach((supply) => {
+        if (supply.id == productsupply.supply_id) {
+          supplyobj = supply
+          costPerPiece = (supply.cost/100)/supply.sold_in_quantity
+          supplyCost = costPerPiece * productsupply.quantity
+          totalsuppliesCost += supplyCost
+        }
+      })
       return(
         <ProductSupplyTile
-          key={supply.id}
-          id={supply.id}
-          name={supply.name}
-          costPerPiece={productSupplies[i].productsupplycost/100}
-          quantity={productSupplies[i].quantity}
+          key={productsupply.id}
+          id={productsupply.id}
+          name={supplyobj.name}
+          costPerPiece={costPerPiece}
+          quantity={productsupply.quantity}
           supplyCost={supplyCost}
-          unit={supply.unit_of_measurement}
+          unit={supplyobj.unit_of_measurement}
+          deleteSupply = {this.deleteSupply}
+          getProduct = {this.getProduct}
         />
       )
     });
-      laborTiles = labors.map((labor, i) => {
-        laborCost = ((labor.cost_per_hour/100)/60) * (productLabors[i].time_per_job)
+      laborTiles = productLabors.map((productlabor) => {
+        labors.forEach((labor) => {
+          if (labor.id == productlabor.labor_id) {
+            laborobj = labor
+            laborCost = ((laborobj.cost_per_hour/100)/60)*productlabor.time_per_job
+            totallaborCost += laborCost
+          }
+        })
         return(
           <ProductLaborTile
-            key={labor.id}
-            id={labor.id}
-            title={labor.description}
-            hourlyWage={labor.cost_per_hour/100}
-            minutesPerJob={productLabors[i].time_per_job}
+            key={productlabor.id}
+            id={productlabor.id}
+            title={laborobj.description}
+            hourlyWage={laborobj.cost_per_hour/100}
+            minutesPerJob={productlabor.time_per_job}
             costForThisJob={laborCost}
+            deleteLabor = {this.deleteLabor}
+            getProduct = {this.getProduct}
           />
         )
       });
     return(
       <div>
-        <h2><b>{product.name}</b></h2>
-        <h5>{`Retail Price: $${product.retail_price/100}`}</h5>
-        <div className="row">
-          <div className="column">
-            <h3>Supplies:</h3>
-              <AddSupplyToProduct
-                product_id={product.id}
-                supplies={supplies}
-                getProduct={this.getProduct}
-              />
-            {supplyTiles}
+        <ProductCostTile
+          key = {product.id}
+          id = {product.id}
+          price = {product.retail_price/100}
+          suppliesCost = {totalsuppliesCost}
+          laborCost = {totallaborCost}
+          costOfProduction = {totalsuppliesCost + totallaborCost}
+          name = {product.name}
+        />
+          <div className="container">
+            <div className="row">
+              <div className="six columns">
+                <h3>Supplies:</h3>
+                  <AddSupplyToProduct
+                    product_id={product.id}
+                    supplies={supplies}
+                    getProduct={this.getProduct}
+                  />
+                {supplyTiles}
+              </div>
+              <div className="six columns">
+                <h3>Production:</h3>
+                <AddLaborToProduct
+                  product_id={product.id}
+                  labors={labors}
+                  getProduct={this.getProduct}
+                />
+                {laborTiles}
+              </div>
+            </div>
           </div>
-          <div className="column">
-            <h3>Labor:</h3>
-            <AddLaborToProduct
-              product_id={product.id}
-              labors={labors}
-              getProduct={this.getProduct}
-            />
-            {laborTiles}
-          </div>
-        </div>
-
       </div>
     )
   }

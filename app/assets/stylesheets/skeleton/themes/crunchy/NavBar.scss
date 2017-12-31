@@ -1,8 +1,8 @@
 // Styles apply to NavBar.js in venue-menu/react/src/NavBar.js
 
-// Main Header Image
+
 #billboard {
-  border-bottom: 3px solid #FFA99E;
+  border-bottom: 3px solid #6C6368;
 }
 
 // #billboard h2 {
@@ -25,9 +25,8 @@
 
 .menu {
   display: inline-block;
-
   vertical-align: top;
-
+  color: #FF8C94;
 }
 
 // #search-bar {
@@ -58,6 +57,6 @@ body {
   background-color: #fff;
 }
 
-#utility {
-  color: #fff;
+.menu-text {
+  color: #6C6368
 }

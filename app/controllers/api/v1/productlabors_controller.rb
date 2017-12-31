@@ -15,6 +15,11 @@ class Api::V1::ProductlaborsController < ApiController
     end
   end
 
+  def destroy
+  @productlabor = Productlabor.find(params[:id])
+  @productlabor.delete
+end
+
   private
   def productlabor_params
     params.require(:productlabor).permit(

@@ -2,16 +2,30 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import Modal from 'react-modal';
 
-const customStyles = {
+const customStyle = {
   content : {
     top                   : '50%',
     left                  : '50%',
     right                 : 'auto',
     bottom                : 'auto',
     marginRight           : '-50%',
+    padding               : '20px',
     transform             : 'translate(-50%, -50%)'
   }
 };
+//
+// position                   : 'absolute',
+//     top                        : '40px',
+//     left                       : '40px',
+//     right                      : '40px',
+//     bottom                     : '40px',
+//     border                     : '1px solid #ccc',
+//     background                 : '#fff',
+//     overflow                   : 'auto',
+//     WebkitOverflowScrolling    : 'touch',
+//     borderRadius               : '4px',
+//     outline                    : 'none',
+
 
 class ProductFormContainer extends Component {
 
@@ -90,15 +104,16 @@ class ProductFormContainer extends Component {
 //Render
  render() {
    let form;
-   form = <form id='form' onSubmit={this.handleProductFormSubmit}>
-     <h5>Add a Product</h5>
+   form = <form id='form' className='modal-form' onSubmit={this.handleProductFormSubmit}>
+     <button id='close' onClick={this.handleCloseModal}>X</button><br/>
+     <h4>Create New Product</h4>
      <label>
-       Product Name:
-       <input value={this.state.name} onChange={this.handleChange} name='name' type='text' placeholder='material'/>
+       <h5>Product Name:</h5>
+       <input value={this.state.name} onChange={this.handleChange} name='name' type='text' placeholder='Product Name'/>
      </label>
      <label>
-       Sale Price:
-       <input value={this.state.retail_price} onChange={this.handleChange} name='retail_price' type='text' placeholder='quantity'/>
+       <h5>Sale Price:</h5>
+       <input value={this.state.retail_price} onChange={this.handleChange} name='retail_price' type='text' placeholder='Price'/>
      </label>
 
      <button type="submit" className="button" onClick={this.handleProductFormSubmit}>Submit</button>
@@ -111,8 +126,9 @@ class ProductFormContainer extends Component {
           isOpen={this.state.showModal}
           contentLabel="Minimal Modal Example"
           onRequestClose={this.handlecloseModal}
+          style={customStyle}
+          contentLabel="Modal"
           >
-         <button id='close' onClick={this.handleCloseModal}>Close</button>
          {form}
        </Modal>
      </div>

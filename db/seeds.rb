@@ -20,12 +20,23 @@ wallet = Product.create(
   image: "https://i.pinimg.com/736x/17/5a/05/175a0544cb0e9092da5a0877def93cb1--handmade-leather-wallet-slim-wallet.jpg",
   )
 
+brownleather = Supply.create(
+  name: "Brown Faux Leather",
+  sold_in_quantity: 2,
+  unit_of_measurement: "yards",
+  cost: 3000)
+
+purpleleather = Supply.create(
+  name: "Purple Alligator Skin Pleather",
+  sold_in_quantity: 2,
+  unit_of_measurement: "yards",
+  cost: 2199)
 
 strap = Supply.create(
-  name: "black strap",
+  name: "Thin Black Leather Straps",
   sold_in_quantity: 12,
   unit_of_measurement: "feet",
-  cost: 400)
+  cost: 4000)
 
 buckle = Supply.create(
   name: "buckle",
@@ -38,26 +49,112 @@ harnessstrap = Productsupply.create(
   product_id: harness.id,
   supply: strap,
   supply_id: strap.id,
-  quantity: 3,
-  productsupplycost: 100)
+  quantity: 4)
 
 harnessbuckle = Productsupply.create(
   product: harness,
   product_id: harness.id,
   supply: buckle,
   supply_id: buckle.id,
-  quantity: 5,
-  productsupplycost: 150)
+  quantity: 5)
+
+ps1 = Productsupply.create(
+  product: purse,
+  product_id: purse.id,
+  supply: strap,
+  supply_id: strap.id,
+  quantity: 1)
+
+ps2 = Productsupply.create(
+  product: wallet,
+  product_id: wallet.id,
+  supply: purpleleather,
+  supply_id: purpleleather.id,
+  quantity: 1)
 
 attachingbuckles = Labor.create(
   description: "attaching buckles",
   cost_per_hour: 1200)
+
+l1 = Labor.create(
+  description: "Leatherwork",
+  cost_per_hour: 1200)
+
+l2 = Labor.create(
+  description: "Packaging Products for Shipping",
+  cost_per_hour: 1000
+)
+
+l3 = Labor.create(
+  description: "Adding Studs",
+  cost_per_hour: 1200
+)
+
+l4 = Labor.create(
+  description: "Tagging and Bagging",
+  cost_per_hour: 1100
+)
+
+pl1 = Productlabor.create(
+  product: harness,
+  product_id: harness.id,
+  labor:l2,
+  labor_id: l2.id,
+  time_per_job: 10
+)
+
+pl2 = Productlabor.create(
+  product: purse,
+  product_id: purse.id,
+  labor:l2,
+  labor_id: l2.id,
+  time_per_job: 10
+)
+
+pl3 = Productlabor.create(
+  product: purse,
+  product_id: purse.id,
+  labor:l4,
+  labor_id: l4.id,
+  time_per_job: 10
+)
+
+pl3 = Productlabor.create(
+  product: purse,
+  product_id: purse.id,
+  labor:l2,
+  labor_id: l2.id,
+  time_per_job: 10
+)
+
+pl4 = Productlabor.create(
+  product: wallet,
+  product_id: wallet.id,
+  labor:l4,
+  labor_id: l4.id,
+  time_per_job: 10
+)
+
+pl5 = Productlabor.create(
+  product: wallet,
+  product_id: wallet.id,
+  labor:l3,
+  labor_id: l3.id,
+  time_per_job: 20
+)
+
+pl6 = Productlabor.create(
+  product: wallet,
+  product_id: wallet.id,
+  labor:l1,
+  labor_id: l1.id,
+  time_per_job: 10
+)
 
 attachingharnessbuckles = Productlabor.create(
   product: harness,
   product_id: harness.id,
   labor:attachingbuckles,
   labor_id: attachingbuckles.id,
-  time_per_job: 10,
-  cost_for_this_job: (((1200 * 10)/100)/60)
+  time_per_job: 10
 )

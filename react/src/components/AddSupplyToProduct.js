@@ -21,7 +21,6 @@ class AddSupplyToProduct extends Component {
       modalIsOpen: false,
       productSupplies:[],
       quantity: '',
-      productsupplycost: '',
       supply_id: 0
     };
     this.handleOpenModal = this.handleOpenModal.bind(this);
@@ -63,7 +62,6 @@ class AddSupplyToProduct extends Component {
         quantity: this.state.quantity,
         supply_id: this.state.supply_id,
         product_id: this.props.product_id,
-        productsupplycost: this.state.productsupplycost
       }
       this.newProductsupply(productsupplyPayload);
       this.handleCloseModal();
@@ -78,7 +76,6 @@ class AddSupplyToProduct extends Component {
         this.setState({
           name: '',
           quantity: '',
-          productsupplycost: '',
           showModal: false
          });
       }
@@ -97,19 +94,15 @@ class AddSupplyToProduct extends Component {
   render() {
     let setSupplyId = (supply) => {this.setSupplyId(supply)}
     let form;
-    form = <form onSubmit={this.handleFormSubmit}>
+    form = <form id='form'onSubmit={this.handleFormSubmit}>
       <h2>Add a Supply to this Product</h2>
       <label>
-      Select a Supply:
+      <h5>Select a Supply:</h5>
       <SupplyDropDown
         setSupplyId = {setSupplyId}
       />
-      Amount used in this product:
-      <input value={this.state.quantity} onChange={this.handleChange} name='quantity' type='text' placeholder='quantity'/>
-       </label>
-       <label>
-      For the price:
-      <input value={this.state.productsupplycost} onChange={this.handleChange} name='productsupplycost' type='text' placeholder='price'/>
+      <h5>Amount used in this product:</h5>
+      <input value={this.state.quantity} onChange={this.handleChange} name='quantity' type='text' placeholder='Quantity'/>
        </label>
       <button type="submit" onClick={this.props.handleFormSubmit}>Submit</button>
     </form>
@@ -121,6 +114,8 @@ class AddSupplyToProduct extends Component {
            isOpen={this.state.showModal}
            contentLabel="Minimal Modal Example"
            onRequestClose={this.handlecloseModal}
+           style={customStyles}
+           contentLabel="Modal"
            >
           <button id='close' onClick={this.handleCloseModal}>Close</button>
           {form}

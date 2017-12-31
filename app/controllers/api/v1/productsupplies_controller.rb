@@ -15,11 +15,15 @@ class Api::V1::ProductsuppliesController < ApiController
     end
   end
 
+  def destroy
+  @productsupply = Productsupply.find(params[:id])
+  @productsupply.delete
+end
+
   private
   def productsupply_params
     params.require(:productsupply).permit(
       :quantity,
-      :productsupplycost,
       :supply_id,
       :product_id
     )
