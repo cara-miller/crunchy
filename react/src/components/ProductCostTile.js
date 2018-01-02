@@ -10,7 +10,7 @@ const ProductCostTile = props =>{
           <div className="eight columns">
             <h3>{props.name}</h3>
             <h5>Current Profit Margin:
-                {(((props.price - props.costOfProduction)/props.price)*100).toFixed(2)}%
+                {props.profitmargin}%
             </h5>
             <h6>Retail Price: ${props.price}</h6>
 
