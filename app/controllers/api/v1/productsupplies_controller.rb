@@ -1,5 +1,5 @@
 class Api::V1::ProductsuppliesController < ApiController
-  before_action :authenticate_user!
+  # before_action :authenticate_user!
 
   def index
     render json: Productsupply.all

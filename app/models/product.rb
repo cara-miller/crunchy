@@ -1,5 +1,5 @@
 class Product < ApplicationRecord
-  belongs_to :user
+  # belongs_to :user
   has_many :productsupplies
   has_many :supplies, through: :productsupplies
 
