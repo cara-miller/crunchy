@@ -17,6 +17,7 @@ class ProductShowContainer extends Component {
       productSupplies: [],
       labors: [],
       productLabors: [],
+      backgroundcolor: '',
       laborCost: null
     };
     this.getProduct = this.getProduct.bind(this);
@@ -85,6 +86,20 @@ class ProductShowContainer extends Component {
     this.getProduct();
   }
 
+  setProfitMarginColor(profitmargin) {
+    const{backgroundcolor}
+    if (profitmargin <= 15) {
+      this.setState({backgroundcolor:'Red'})
+    } else if (25 >= profitmargin > 15) {
+      this.setState({backgroundcolor:'LightSalmon'})
+    } else if (30 >= profitmargin > 25){
+      this.setState({backgroundcolor:'DarkSeaGreen'})
+    } else (profitmargin > 30) {
+      this.setState({backgroundcolor:'SpringGreen'})
+    }
+  }
+
+
   //render
 
   render () {
@@ -98,6 +113,13 @@ class ProductShowContainer extends Component {
     let laborobj;
     let totalsuppliesCost = 0;
     let totallaborCost = 0;
+    let profitmargin = 0;
+    let totalCostofProduction = 0;
+
+
+
+
+
 
     supplyTiles = productSupplies.map((productsupply) => {
       supplies.forEach((supply) => {
@@ -106,6 +128,7 @@ class ProductShowContainer extends Component {
           costPerPiece = (supply.cost/100)/supply.sold_in_quantity
           supplyCost = costPerPiece * productsupply.quantity
           totalsuppliesCost += supplyCost
+          totalCostofProduction += totalsuppliesCost
         }
       })
       return(
@@ -128,8 +151,12 @@ class ProductShowContainer extends Component {
             laborobj = labor
             laborCost = ((laborobj.cost_per_hour/100)/60)*productlabor.time_per_job
             totallaborCost += laborCost
+            totalCostofProduction += totallaborCost
+
           }
         })
+      profitmargin = ((((product.retail_price/100) - totalCostofProduction)/(product.retail_price/100))*100).toFixed(2);
+
         return(
           <ProductLaborTile
             key={productlabor.id}
@@ -143,6 +170,7 @@ class ProductShowContainer extends Component {
           />
         )
       });
+
     return(
       <div>
         <ProductCostTile
@@ -151,8 +179,9 @@ class ProductShowContainer extends Component {
           price = {product.retail_price/100}
           suppliesCost = {totalsuppliesCost}
           laborCost = {totallaborCost}
-          costOfProduction = {totalsuppliesCost + totallaborCost}
+          costOfProduction = {totalCostofProduction}
           name = {product.name}
+          profitmargin = {profitmargin}
         />
           <div className="container">
             <div className="row">
