@@ -22,7 +22,6 @@ class SupplyDropDown extends Component{
 
 componentDidMount(){
   this.getOptions();
-  // debugger;
 }
   getOptions() {
     fetch('/api/v1/supplies')
@@ -58,6 +57,7 @@ componentDidMount(){
        <div>
          <Select
            name="form-field-name"
+           className="select"
            value={this.state.selectedOption.value}
            onChange={this.handleChange}
            options={options}

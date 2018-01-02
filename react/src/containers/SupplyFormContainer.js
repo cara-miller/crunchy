@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import Modal from 'react-modal';
 
-const customStyles = {
+const customStyle = {
   content : {
     top                   : '50%',
     left                  : '50%',
@@ -97,30 +97,32 @@ class SupplyFormContainer extends Component {
  render() {
    let form;
    form = <form id='form' onSubmit={this.handleSupplyFormSubmit}>
-     <h5>Add a Supply</h5>
+      <button id='close' onClick={this.handleCloseModal}>X</button>
+     <h4>New Supply</h4>
      <label>
-       Supply Name:
+       <h5>Supply Name:</h5>
        <input value={this.state.name} onChange={this.handleChange} name='name' type='text' placeholder='material'/>
      </label>
      <label>
-       This supply is sold in sets of:
+       <h5>This supply is sold in sets of:</h5>
        <input value={this.state.sold_in_quantity} onChange={this.handleChange} name='sold_in_quantity' type='text' placeholder='quantity'/>
        <input value={this.state.unit_of_measurement} onChange={this.handleChange} name='unit_of_measurement' type='text' placeholder='unit of measurement'/>
      </label>
-        For the price:
+        <h5>For the price:</h5>
         <input value={this.state.cost} onChange={this.handleChange} name='cost' type='text' placeholder='price'/>
      <button type="submit" className="button" onClick={this.handleSupplyFormSubmit}>Submit</button>
   </form>
 
     return(
       <div>
-        <button id='add' className="topbutton" onClick={this.handleOpenModal}>Create New Supply</button>
+        <button id='add' className="topbutton" onClick={this.handleOpenModal}>Create Supply</button>
        <Modal
           isOpen={this.state.showModal}
           contentLabel="Minimal Modal Example"
           onRequestClose={this.handlecloseModal}
+          style={customStyle}
+          contentLabel="Modal"
           >
-         <button id='close' onClick={this.handleCloseModal}>Close</button>
          {form}
        </Modal>
      </div>

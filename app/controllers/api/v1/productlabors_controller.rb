@@ -1,4 +1,5 @@
 class Api::V1::ProductlaborsController < ApiController
+  # before_action :authenticate_user!
 
   def index
     render json: Productlabor.all
@@ -14,6 +15,11 @@ class Api::V1::ProductlaborsController < ApiController
         status: :unprocessable_entity
     end
   end
+
+  def destroy
+  @productlabor = Productlabor.find(params[:id])
+  @productlabor.delete
+end
 
   private
   def productlabor_params

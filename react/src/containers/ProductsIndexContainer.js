@@ -54,11 +54,15 @@ class ProductsIndexContainer extends Component {
     })
     return(
       <div>
+        <div className="container">
+          <div className="row">
         <h1>All Products</h1>
         <ProductFormContainer
           getProducts = {this.getProducts}
         />
         {products}
+        </div>
+        </div>
       </div>
     )
   }

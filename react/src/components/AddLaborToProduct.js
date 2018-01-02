@@ -3,7 +3,15 @@ import ReactDOM from 'react-dom';
 import Modal from 'react-modal';
 import LaborDropDown from './LaborDropDown'
 
-const customStyles = {
+const customStyle = {
+  overlay : {
+    position          : 'fixed',
+    top               : 0,
+    left              : 0,
+    right             : 0,
+    bottom            : 0,
+    backgroundColor   : 'rgba(255, 255, 255, 0.75)'
+  },
   content : {
     top                   : '50%',
     left                  : '50%',
@@ -100,11 +108,11 @@ class AddLaborToProduct extends Component {
     form = <form onSubmit={this.handleFormSubmit}>
       <h2>Add Production to this Product</h2>
       <label>
-      Select a Labor Type:
+      <h5>Select a Labor Type:</h5>
       <LaborDropDown
         setLaborId = {setLaborId}
       />
-      Approximate time (in minutes) to complete this task for this product:
+      <h5>Approximate time (in minutes) to complete this task for this product:</h5>
       <input value={this.state.time_per_job} onChange={this.handleChange} name='time_per_job' type='text' placeholder='number of minutes'/>
        </label>
 
@@ -113,11 +121,13 @@ class AddLaborToProduct extends Component {
 
     return (
       <div>
-        <button id='add' className="button" onClick={this.handleOpenModal}>Add Production to Product</button>
+        <button id='add' className="button" onClick={this.handleOpenModal}>Add Labor to Product</button>
         <Modal
            isOpen={this.state.showModal}
            contentLabel="Minimal Modal Example"
            onRequestClose={this.handlecloseModal}
+           style={customStyle}
+           contentLabel="Modal"
            >
           <button id='close' onClick={this.handleCloseModal}>Close</button>
           {form}

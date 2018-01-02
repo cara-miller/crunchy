@@ -1,4 +1,11 @@
 class User < ApplicationRecord
+  # has_many :products
+  # :supplies,
+  # :productsupplies,
+  # :labors,
+  # :productlabors
+
+
   validates_presence_of :first_name, :last_name, :username
 
   # Include default devise modules. Others available are:

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import Modal from 'react-modal';
 
-const customStyles = {
+const customStyle = {
   content : {
     top                   : '50%',
     left                  : '50%',
@@ -91,15 +91,16 @@ class LaborFormContainer extends Component {
 //Render
  render() {
    let form;
-   form = <form id='form' onSubmit={this.handleLaborFormSubmit}>
-     <h5>Add a Labor Type</h5>
+   form = <form id='form' className='modal-form' onSubmit={this.handleLaborFormSubmit}>
+    <button id='close' onClick={this.handleCloseModal}>X</button>
+     <h4>New Labor Type</h4>
      <label>
-       Labor Description:
+       <h5>Labor Description:</h5>
        <input value={this.state.description} onChange={this.handleChange} name='description' type='text' placeholder='Job Name'/>
      </label>
      <label>
-       Hourly Wage:
-       <input value={this.state.cost_per_hour} onChange={this.handleChange} name='cost_per_hour' type='text' placeholder='wage'/>
+      <h5>Hourly Wage:</h5>
+       <input value={this.state.cost_per_hour} onChange={this.handleChange} name='cost_per_hour' type='text' placeholder='Wage'/>
      </label>
 
      <button type="submit" className="button" onClick={this.handleLaborFormSubmit}>Submit</button>
@@ -107,13 +108,14 @@ class LaborFormContainer extends Component {
 
     return(
       <div>
-        <button id='add' className="topbutton" onClick={this.handleOpenModal}>Create New Labor</button>
+        <button id='add' className="topbutton" onClick={this.handleOpenModal}>Create Labor</button>
        <Modal
           isOpen={this.state.showModal}
           contentLabel="Minimal Modal Example"
           onRequestClose={this.handlecloseModal}
+          style={customStyle}
+          contentLabel="Modal"
           >
-         <button id='close' onClick={this.handleCloseModal}>Close</button>
          {form}
        </Modal>
      </div>
