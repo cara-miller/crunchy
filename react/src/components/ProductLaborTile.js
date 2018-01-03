@@ -15,13 +15,15 @@ const ProductLaborTile = props =>{
   // }
 
   return(
-    <div className="rows" id="tile">
-      <div>
-        <h5>{props.title}</h5>
-        <p>{props.minutesPerJob} minutes to complete at ${props.hourlyWage} per hour</p>
-        <p><b>Total Cost: ${(props.costForThisJob).toFixed(2)}</b></p>
+    <div>
+      <div className="rows" id="tile">
+        <div>
+          <h5>{props.title}</h5>
+          <p>{props.minutesPerJob} minutes to complete at ${props.hourlyWage} per hour</p>
+          <p><b>Total Cost: ${(props.costForThisJob).toFixed(2)}</b></p>
+        </div>
+        {deleteButton}
       </div>
-      {deleteButton}
     </div>
   );
 };

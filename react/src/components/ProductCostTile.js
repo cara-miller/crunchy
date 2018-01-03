@@ -9,11 +9,11 @@ const ProductCostTile = props =>{
       <div className="row" id="productheader">
           <div className="eight columns">
             <h3>{props.name}</h3>
-            <h5>Current Profit Margin:
-                {props.profitmargin}%
-            </h5>
-            <h6>Retail Price: ${props.price}</h6>
-
+            <div className="row">
+              <h5 className="eight columns" id={props.pmColor}>Current Profit Margin: {props.profitmargin}%</h5>
+              <div className = "four columns"></div>
+            </div>
+            <h5>Retail Price: ${props.price}</h5>
           </div>
           <div className="four columns"><p>Total Cost of Labor: ${props.laborCost.toFixed(2)}</p>
             <p>Total Cost of Supplies: ${props.suppliesCost.toFixed(2)}</p>
