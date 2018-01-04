@@ -102,7 +102,7 @@ class AddSupplyToProduct extends Component {
         setSupplyId = {setSupplyId}
       />
       <h5>Amount used in this product:</h5>
-      <input value={this.state.quantity} onChange={this.handleChange} name='quantity' type='text' placeholder='Quantity'/>
+      <input value={this.state.quantity} className = 'forminputs' onChange={this.handleChange} name='quantity' type='text' placeholder='Quantity'/>
        </label>
       <button type="submit" onClick={this.props.handleFormSubmit}>Submit</button>
     </form>

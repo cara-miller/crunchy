@@ -113,7 +113,7 @@ class AddLaborToProduct extends Component {
         setLaborId = {setLaborId}
       />
       <h5>Approximate time (in minutes) to complete this task for this product:</h5>
-      <input value={this.state.time_per_job} onChange={this.handleChange} name='time_per_job' type='text' placeholder='number of minutes'/>
+      <input className = 'forminputs' value={this.state.time_per_job} onChange={this.handleChange} name='time_per_job' type='text' placeholder='number of minutes'/>
        </label>
 
       <button type="submit" onClick={this.props.handleFormSubmit}>Submit</button>
