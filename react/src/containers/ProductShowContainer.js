@@ -17,7 +17,6 @@ class ProductShowContainer extends Component {
       productSupplies: [],
       labors: [],
       productLabors: [],
-      backgroundcolor: '',
       laborCost: null
     };
     this.getProduct = this.getProduct.bind(this);
@@ -61,7 +60,6 @@ class ProductShowContainer extends Component {
       headers: { 'Content-Type': 'application/json' }
     }).then(response => {
       if (response.ok) {
-        alert("Labor removed from product")
       } else {
         alert("This cannot be deleted")
       }
@@ -77,7 +75,6 @@ class ProductShowContainer extends Component {
       headers: { 'Content-Type': 'application/json' }
     }).then(response => {
       if (response.ok) {
-        alert("Labor removed from product")
       } else {
         alert("This cannot be deleted")
       }
@@ -85,19 +82,6 @@ class ProductShowContainer extends Component {
     .catch(error => console.error(`Error in fetch: ${error.message}`));
     this.getProduct();
   }
-
-  // setProfitMarginColor(profitmargin) {
-  //   if (profitmargin <= 15) {
-  //     this.setState({backgroundcolor = red})
-  //   } else if (25 >= profitmargin > 15) {
-  //     this.setState({backgroundcolor = LightSalmon})
-  //   } else if (30 >= profitmargin > 25){
-  //     this.setState({backgroundcolor = DarkSeaGreen})
-  //   } else (profitmargin > 30) {
-  //     this.setState({backgroundcolor = SpringGreen})
-  //   }
-  // }
-
 
   //render
 
@@ -114,20 +98,16 @@ class ProductShowContainer extends Component {
     let totallaborCost = 0;
     let profitmargin = 0;
     let totalCostofProduction = 0;
-
-
-
-
-
+    let pmColor = '';
 
     supplyTiles = productSupplies.map((productsupply) => {
       supplies.forEach((supply) => {
         if (supply.id == productsupply.supply_id) {
           supplyobj = supply
-          costPerPiece = (supply.cost/100)/supply.sold_in_quantity
+          costPerPiece = (supply.cost)/supply.sold_in_quantity
           supplyCost = costPerPiece * productsupply.quantity
           totalsuppliesCost += supplyCost
-          totalCostofProduction += totalsuppliesCost
+
         }
       })
       return(
@@ -148,10 +128,8 @@ class ProductShowContainer extends Component {
         labors.forEach((labor) => {
           if (labor.id == productlabor.labor_id) {
             laborobj = labor
-            laborCost = ((laborobj.cost_per_hour/100)/60)*productlabor.time_per_job
+            laborCost = ((laborobj.cost_per_hour)/60)*productlabor.time_per_job
             totallaborCost += laborCost
-            totalCostofProduction += totallaborCost
-
           }
         })
         return(
@@ -159,7 +137,7 @@ class ProductShowContainer extends Component {
             key={productlabor.id}
             id={productlabor.id}
             title={laborobj.description}
-            hourlyWage={laborobj.cost_per_hour/100}
+            hourlyWage={laborobj.cost_per_hour}
             minutesPerJob={productlabor.time_per_job}
             costForThisJob={laborCost}
             deleteLabor = {this.deleteLabor}
@@ -167,19 +145,34 @@ class ProductShowContainer extends Component {
           />
         )
       });
-      profitmargin = ((((product.retail_price/100) - totalCostofProduction)/(product.retail_price/100))*100).toFixed(2);
+      totalCostofProduction += totallaborCost
+      totalCostofProduction += totalsuppliesCost
+      profitmargin = ((((product.retail_price) - totalCostofProduction)/(product.retail_price))*100).toFixed(2);
+
+      if (profitmargin <= 15) {
+        pmColor = 'pmcBad';
+      } else if (profitmargin <=25){
+        pmColor = 'pmcLessBad';
+      } else if (profitmargin <= 30){
+        pmColor = 'pmcAcceptable';
+      } else {
+        pmColor = 'pmcGreat';
+      }
+
 
     return(
       <div>
         <ProductCostTile
           key = {product.id}
           id = {product.id}
-          price = {product.retail_price/100}
+          price = {product.retail_price}
           suppliesCost = {totalsuppliesCost}
           laborCost = {totallaborCost}
           costOfProduction = {totalCostofProduction}
           name = {product.name}
           profitmargin = {profitmargin}
+          pmColor = {pmColor}
+          getProduct = {this.getProduct}
         />
           <div className="container">
             <div className="row">

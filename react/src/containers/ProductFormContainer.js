@@ -13,19 +13,6 @@ const customStyle = {
     transform             : 'translate(-50%, -50%)'
   }
 };
-//
-// position                   : 'absolute',
-//     top                        : '40px',
-//     left                       : '40px',
-//     right                      : '40px',
-//     bottom                     : '40px',
-//     border                     : '1px solid #ccc',
-//     background                 : '#fff',
-//     overflow                   : 'auto',
-//     WebkitOverflowScrolling    : 'touch',
-//     borderRadius               : '4px',
-//     outline                    : 'none',
-
 
 class ProductFormContainer extends Component {
 

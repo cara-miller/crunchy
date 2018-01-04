@@ -7,21 +7,23 @@ const ProductLaborTile = props =>{
   }
 
   let deleteButton;
-  deleteButton = <button id="add" onClick={deleteLabor}>Delete</button>
-  // if (props.currentUser.id === props.userId || props.currentUser.role === "admin") {
-  //   deleteButton = <button id="add" onClick={deleteReview}>Delete Review</button>
-  // } else {
-  //   deleteButton = null
-  // }
+  deleteButton = <button id= "noborder" onClick={deleteLabor}><i className="fa fa-trash-o fa-2x" aria-hidden="true"></i></button>
 
   return(
-    <div className="rows" id="tile">
-      <div>
-        <h5>{props.title}</h5>
-        <p>{props.minutesPerJob} minutes to complete at ${props.hourlyWage} per hour</p>
-        <p><b>Total Cost: ${(props.costForThisJob).toFixed(2)}</b></p>
+    <div>
+      <div className="row" id="tile">
+        <div>
+          <div className="row">
+            <h5 className="nine columns">{props.title}</h5>
+            <div className="three columns">
+              {deleteButton}
+            </div>
+          </div>
+
+          <p>{props.minutesPerJob} minutes to complete at ${props.hourlyWage} per hour</p>
+          <p><b>Total Cost: ${(props.costForThisJob).toFixed(2)}</b></p>
+        </div>        
       </div>
-      {deleteButton}
     </div>
   );
 };

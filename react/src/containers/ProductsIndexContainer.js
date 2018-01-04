@@ -39,6 +39,22 @@ class ProductsIndexContainer extends Component {
     .catch(error => console.error(`Error in fetch: ${error.message}`));
   }
 
+  deleteProduct(id) {
+    fetch(`/api/v1/products/${id}`, {
+      credentials: 'same-origin',
+      method: 'DELETE',
+      headers: { 'Content-Type': 'application/json' }
+    }).then(response => {
+      if (response.ok) {
+        
+      } else {
+        alert("This cannot be deleted")
+      }
+    })
+    .catch(error => console.error(`Error in fetch: ${error.message}`));
+    this.getProducts();
+  }
+
   render (){
     let products = this.state.products.map(product => {
       return (
@@ -49,6 +65,8 @@ class ProductsIndexContainer extends Component {
           image={product.image}
           retailPrice={product.retail_price}
           profitMargin={product.profit_margin}
+          deleteProduct= {this.deleteProduct}
+          getProducts= {this.getProducts}
         />
       )
     })
@@ -56,7 +74,7 @@ class ProductsIndexContainer extends Component {
       <div>
         <div className="container">
           <div className="row">
-        <h1>All Products!</h1>
+        <h1>All Products</h1>
         <ProductFormContainer
           getProducts = {this.getProducts}
         />
