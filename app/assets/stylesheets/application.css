@@ -22,43 +22,57 @@ a {color: #6C6368}
      width: 50%;
  }
 
+ #noborder {
+  border: 0px;
+}
  #pmcBad {
    border-radius: 8px;
    background-color: #c45656;
-
+   margin-right: 1.875em;
+   padding-left: 5px;
  }
 
  #pmcLessBad {
    border-radius: 8px;
    background-color: #ffaa00;
-
+   margin-right: 1.875em;
+   padding-left: 5px;
  }
 
  #pmcAcceptable {
    border-radius: 8px;
    background-color: #b1e516;
-
+   margin-right: 1.875em;
+   padding-left: 5px;
  }
 
  #pmcGreat {
    border-radius: 8px;
    background-color: #0cff00;
-
+   margin-right: 1.875em;
+   padding-left: 5px;
  }
 
  #tile {
    background-color:
    #f2f7fc;
    border-radius: 8px;
-   margin: 10px;
-   padding: 2px;
-
+   margin: auto;
+   margin-top: 10px;
+   border-radius: 8px;
+   padding: 0px;
+   padding-left: 19px;
  }
 
 #producttile {
    border-radius: 8px;
     background-color: #f2f7fc;
 }
+
+#theannoyingdiv {
+   padding-left: 19px;
+}
+
  .row:after {
      content: "";
      display: table;
@@ -67,8 +81,10 @@ a {color: #6C6368}
 
  #productheader {
    background-color: #f2f7fc;
-   margin: 10px 50px 50px 100px;
+   margin: auto;
+   margin-top: 10px;
    border-radius: 8px;
+   padding: 15px;
  }
 
  .button {
@@ -80,9 +96,13 @@ a {color: #6C6368}
     font-size: 18px;
 }
 
-#select {
-  maxWidth: '60rem'
+#editbutton {
+  margin-top: 4px;
+  float: left;
 }
+/* #select {
+  maxWidth: '60rem'
+} */
 
 #close {
   float: right;

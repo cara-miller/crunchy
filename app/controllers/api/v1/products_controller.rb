@@ -25,6 +25,27 @@ class Api::V1::ProductsController < ApiController
     end
   end
 
+  def update
+    if Product.update(params[:id], product_params)
+      @product = Product.find(params[:id])
+      render json: {
+        product: @product,
+        supplies: @product.supplies,
+        productSupplies: @product.productsupplies,
+        labors: @product.labors,
+        productLabors: @product.productlabors
+       }
+    else
+      render json: { error: product.errors.full_messages }, status: :unprocessable_entity
+    end
+  end
+
+  def destroy
+  @product = Product.find(params[:id])
+  @product.delete
+end
+
+
   private
   def product_params
     params.require(:product).permit(

@@ -172,6 +172,7 @@ class ProductShowContainer extends Component {
           name = {product.name}
           profitmargin = {profitmargin}
           pmColor = {pmColor}
+          getProduct = {this.getProduct}
         />
           <div className="container">
             <div className="row">

@@ -8,16 +8,21 @@ const ProductSupplyTile = props =>{
   }
 
   let deleteButton;
-  deleteButton = <button id="add" onClick={deleteSupply}>Delete</button>
+  deleteButton = <button id= "noborder" onClick={deleteSupply}><i className="fa fa-trash-o fa-2x" aria-hidden="true"></i></button>
 
   return(
-    <div className="rows" id="tile">
+    <div className="row" id="tile">
       <div>
-        <h5>{props.name}</h5>
+        <div className="row">
+          <h5 className="nine columns">{props.name}</h5>
+            <div className="three columns">
+              {deleteButton}
+            </div>
+          </div>
+
         <p>Requires {props.quantity} {props.unit} at ${(props.costPerPiece).toFixed(2)} per piece</p>
         <p><b>Total Cost: ${(props.supplyCost).toFixed(2)}</b></p>
       </div>
-      {deleteButton}
     </div>
   );
 };
