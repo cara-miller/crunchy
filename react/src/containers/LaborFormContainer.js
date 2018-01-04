@@ -96,11 +96,11 @@ class LaborFormContainer extends Component {
      <h4>New Labor Type</h4>
      <label>
        <h5>Labor Description:</h5>
-       <input value={this.state.description} onChange={this.handleChange} name='description' type='text' placeholder='Job Name'/>
+       <input value={this.state.description} className = 'forminputs' onChange={this.handleChange} name='description' type='text' placeholder='Job Name'/>
      </label>
      <label>
       <h5>Hourly Wage:</h5>
-       <input value={this.state.cost_per_hour} onChange={this.handleChange} name='cost_per_hour' type='text' placeholder='Wage'/>
+       <input value={this.state.cost_per_hour} className = 'forminputs' onChange={this.handleChange} name='cost_per_hour' type='text' placeholder='Wage'/>
      </label>
 
      <button type="submit" className="button" onClick={this.handleLaborFormSubmit}>Submit</button>

@@ -97,11 +97,11 @@ render() {
    <h4>Update Product</h4>
    <label>
      <h5>Product Name:</h5>
-     <input value={this.state.name} onChange={this.handleChange} name='name' type='text' placeholder={this.props.name}/>
+     <input value={this.state.name} className = 'forminputs' onChange={this.handleChange} name='name' type='text' placeholder={this.props.name}/>
    </label>
    <label>
      <h5>Sale Price:</h5>
-     <input value={this.state.retail_price} onChange={this.handleChange} name='retail_price' type='text' placeholder= {`$${this.props.cost}`}/>
+     <input value={this.state.retail_price} className = 'forminputs' onChange={this.handleChange} name='retail_price' type='text' placeholder= {`$${this.props.cost}`}/>
    </label>
 
    <button type="submit" className="button" onClick={this.handleProductFormSubmit}>Submit</button>

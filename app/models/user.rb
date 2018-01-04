@@ -1,15 +1,13 @@
 class User < ApplicationRecord
-  # has_many :products
-  # :supplies,
-  # :productsupplies,
-  # :labors,
-  # :productlabors
+  has_many :products
+  has_many :supplies
+  has_many :productsupplies
+  has_many :labors
+  has_many :productlabors
 
 
-  validates_presence_of :first_name, :last_name, :username
+  validates_presence_of :first_name, :last_name, :username, :email
 
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 end

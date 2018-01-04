@@ -101,15 +101,15 @@ class SupplyFormContainer extends Component {
      <h4>New Supply</h4>
      <label>
        <h5>Supply Name:</h5>
-       <input value={this.state.name} onChange={this.handleChange} name='name' type='text' placeholder='material'/>
+       <input value={this.state.name} className = 'forminputs' onChange={this.handleChange} name='name' type='text' placeholder='material'/>
      </label>
      <label>
        <h5>This supply is sold in sets of:</h5>
-       <input value={this.state.sold_in_quantity} onChange={this.handleChange} name='sold_in_quantity' type='text' placeholder='quantity'/>
-       <input value={this.state.unit_of_measurement} onChange={this.handleChange} name='unit_of_measurement' type='text' placeholder='unit of measurement'/>
+       <input value={this.state.sold_in_quantity} className = 'forminputs' onChange={this.handleChange} name='sold_in_quantity' type='text' placeholder='quantity'/>
+       <input value={this.state.unit_of_measurement} className = 'forminputs' onChange={this.handleChange} name='unit_of_measurement' type='text' placeholder='unit of measurement'/>
      </label>
         <h5>For the price:</h5>
-        <input value={this.state.cost} onChange={this.handleChange} name='cost' type='text' placeholder='price'/>
+        <input value={this.state.cost} className = 'forminputs' onChange={this.handleChange} name='cost' type='text' placeholder='price'/>
      <button type="submit" className="button" onClick={this.handleSupplyFormSubmit}>Submit</button>
   </form>
 

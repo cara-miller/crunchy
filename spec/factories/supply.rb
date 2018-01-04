@@ -4,5 +4,6 @@ FactoryBot.define do
     sold_in_quantity 120
     unit_of_measurement 'units'
     cost 8
+    user
   end
 end

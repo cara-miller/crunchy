@@ -96,11 +96,11 @@ class ProductFormContainer extends Component {
      <h4>Create New Product</h4>
      <label>
        <h5>Product Name:</h5>
-       <input value={this.state.name} onChange={this.handleChange} name='name' type='text' placeholder='Product Name'/>
+       <input value={this.state.name} className = 'forminputs' onChange={this.handleChange} name='name' type='text' placeholder='Product Name'/>
      </label>
      <label>
        <h5>Sale Price:</h5>
-       <input value={this.state.retail_price} onChange={this.handleChange} name='retail_price' type='text' placeholder='Price'/>
+       <input value={this.state.retail_price} className = 'forminputs' onChange={this.handleChange} name='retail_price' type='text' placeholder='Price'/>
      </label>
 
      <button type="submit" className="button" onClick={this.handleProductFormSubmit}>Submit</button>

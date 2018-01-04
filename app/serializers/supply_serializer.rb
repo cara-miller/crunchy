@@ -3,9 +3,9 @@ class SupplySerializer < ActiveModel::Serializer
             :name,
             :sold_in_quantity,
             :unit_of_measurement,
-            :cost
-            # :user_id
-            # :current_user
+            :cost,
+            :user_id,
+            :current_user
 
   # def current_user
   #   scope.current_user

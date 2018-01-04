@@ -1,6 +1,5 @@
-# if statement will need to be added to def create to ensure sfs is associated with the correct labor_id
 class Api::V1::LaborsController < ApiController
-  # before_action :authenticate_user!
+  before_action :authenticate_user!
   def index
     render json: Labor.all
   end

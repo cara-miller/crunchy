@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 
   devise_for :users
 
+  resources :users, only: [:index, :show, :destroy]
   resources :supplies, only: [:index, :show]
   resources :homes, only: [:index]
   resources :products, only: [:index, :show, :new, :create, :update]
