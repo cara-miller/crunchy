@@ -3,15 +3,15 @@ class ProductSerializer < ActiveModel::Serializer
             :id,
             :retail_price,
             :profit_margin,
-            :image,
+            :current_user,
             :supplies,
             :productsupplies,
             :labors,
             :productlabors,
             :user_id,
-            :current_user
 
-  # def current_user
-  #     scope.current_user
-  # end
+
+  def current_user
+      scope.current_user
+  end
 end

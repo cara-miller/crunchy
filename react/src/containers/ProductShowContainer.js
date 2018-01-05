@@ -24,7 +24,9 @@ class ProductShowContainer extends Component {
 
   getProduct() {
   let productId = this.props.params.id
-  fetch(`/api/v1/products/${productId}`)
+  fetch(`/api/v1/products/${productId}`, {
+    credentials: 'same-origin'
+  })
   .then(response => {
       if (response.ok) {
         return response;

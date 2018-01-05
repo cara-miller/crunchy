@@ -1,8 +1,13 @@
 class Api::V1::ProductsController < ApiController
   before_action :authenticate_user!
+  skip_before_action :verify_authenticity_token
 
   def index
-    render json: Product.all
+    render json: {
+      products: Product.where(user_id: current_user.id),
+      current_user: current_user
+    }
+
   end
 
   def show
@@ -17,9 +22,12 @@ class Api::V1::ProductsController < ApiController
   end
 
   def create
-    product = Product.new(product_params)
-    if product.save
-      render json: product
+    @product = Product.new(product_params)
+    @user = current_user
+    @product.user = @user
+    @product.save
+    if @product.save
+      return render json: { product: Product.find(@product.id) }
     else
       render json: { error: product.errors.full_messages }, status: :unprocessable_entity
     end
@@ -52,7 +60,8 @@ end
       :name,
       :retail_price,
       :profit_margin,
-      :image
+      :image,
+      :user_id
     )
   end
 end

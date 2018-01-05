@@ -9,8 +9,7 @@ class ProductsIndexContainer extends Component {
     super(props);
     this.state = {
       products: [],
-      supplies: [],
-      productsupplies: []
+      currentUser: {}
     }
     this.getProducts = this.getProducts.bind(this);
   }
@@ -20,7 +19,9 @@ class ProductsIndexContainer extends Component {
   }
 
   getProducts(){
-    fetch('/api/v1/products')
+    fetch('/api/v1/products', {
+      credentials: 'same-origin'
+    })
     .then(response => {
       if (response.ok) {
         return response;
@@ -33,7 +34,8 @@ class ProductsIndexContainer extends Component {
     .then(response => response.json())
     .then(body => {
       this.setState({
-        products: body.products
+        products: body.products,
+        currentUser: body.current_user
       })
     })
     .catch(error => console.error(`Error in fetch: ${error.message}`));
@@ -46,7 +48,7 @@ class ProductsIndexContainer extends Component {
       headers: { 'Content-Type': 'application/json' }
     }).then(response => {
       if (response.ok) {
-        
+
       } else {
         alert("This cannot be deleted")
       }
@@ -77,6 +79,7 @@ class ProductsIndexContainer extends Component {
         <h1>All Products</h1>
         <ProductFormContainer
           getProducts = {this.getProducts}
+          userId = {this.state.currentUser.id}
         />
         {products}
         </div>

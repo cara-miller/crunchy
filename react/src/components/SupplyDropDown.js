@@ -24,7 +24,9 @@ componentDidMount(){
   this.getOptions();
 }
   getOptions() {
-    fetch('/api/v1/supplies')
+    fetch('/api/v1/supplies', {
+      credentials: 'same-origin'
+    })
     .then(response => {
       if (response.ok) {
         return response;
