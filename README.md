@@ -5,7 +5,7 @@
 
 * Name: Crunchy
 
-* Features::
+* Features:
 -Create a Product Line
 -Add Products to Product Line
 -Add labor, supplies, and comparables to products

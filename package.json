@@ -10,7 +10,7 @@
     "webpack": "node_modules/.bin/webpack --config ./react/webpack.config.js"
   },
   "engines": {
-    "node": ">=4.0"
+    "node": ">=6.0"
   },
   "author": "",
   "license": "ISC",
