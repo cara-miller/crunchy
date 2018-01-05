@@ -25,7 +25,9 @@ componentDidMount(){
   // debugger;
 }
   getOptions() {
-    fetch('/api/v1/labors')
+    fetch('/api/v1/labors', {
+      credentials: 'same-origin'
+    })
     .then(response => {
       if (response.ok) {
         return response;
@@ -38,7 +40,7 @@ componentDidMount(){
     .then(response => response.json())
     .then(body => {
       this.setState({
-        labors: body
+        labors: body.labors
       })
     }
   )

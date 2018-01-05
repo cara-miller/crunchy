@@ -33,7 +33,7 @@ class ProductFormContainer extends Component {
 
 //Product Form Methods
   newProduct(productPayload) {
-    fetch('/api/v1/products', {
+    fetch(`/api/v1/products`, {
       credentials: 'same-origin',
       method: 'POST',
       body: JSON.stringify(productPayload),
@@ -61,6 +61,7 @@ class ProductFormContainer extends Component {
       name: this.state.name,
       retail_price: this.state.retail_price,
       profit_margin: this.state.profit_margin,
+      user_id: this.props.userId
     }
     this.newProduct(productPayload);
     this.handleCloseModal();
