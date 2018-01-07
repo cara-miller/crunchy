@@ -1,8 +1,9 @@
 class Api::V1::ProductsController < ApiController
-  before_action :authenticate_user!
+  :authenticate_user!
   skip_before_action :verify_authenticity_token
 
   def index
+    # binding.pry
     render json: {
       products: Product.where(user_id: current_user.id),
       current_user: current_user

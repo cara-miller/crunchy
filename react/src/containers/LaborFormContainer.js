@@ -21,7 +21,8 @@ class LaborFormContainer extends Component {
       labors: [],
       modalIsOpen: false,
       description: '',
-      cost_per_hour: ''
+      cost_per_hour: '',
+      currentUser: {}
     }
     this.handleOpenModal = this.handleOpenModal.bind(this);
     this.handleCloseModal = this.handleCloseModal.bind(this);
@@ -50,7 +51,8 @@ class LaborFormContainer extends Component {
     .then(body => {
       this.handleCloseModal()
       this.setState({
-        labors: body
+        labors: body.labors,
+        currentUser: body.current_user
       })
     })
     .catch(error => console.error(`Error in fetch: ${error.message}`));
@@ -70,7 +72,13 @@ class LaborFormContainer extends Component {
 //Modal Methods
 
   handleOpenModal () {
-  this.setState({ showModal: true });
+    // if (this.state.currentUser.id != null ) {
+      debugger
+      this.setState({ showModal: true });
+    // }  else {
+    //   event.preventDefault();
+    //   alert("You need to be logged in to do this!")
+    // }
 }
   handleCloseModal () {
     this.setState({

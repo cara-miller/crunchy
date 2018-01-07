@@ -23,7 +23,8 @@ class ProductFormContainer extends Component {
       products: [],
       modalIsOpen: false,
       retail_price: '',
-      profit_margin: ''
+      profit_margin: '',
+      currentUser: {}
     }
     this.handleOpenModal = this.handleOpenModal.bind(this);
     this.handleCloseModal = this.handleCloseModal.bind(this);
@@ -70,8 +71,14 @@ class ProductFormContainer extends Component {
 //Modal Methods
 
   handleOpenModal () {
-  this.setState({ showModal: true });
-}
+    if (this.props.currentUser.id != null ) {
+      this.setState({ showModal: true });
+    }  else {
+    event.preventDefault();
+    alert("You need to be logged in to do this!")
+    }
+  }
+
   handleCloseModal () {
     this.setState({
       name: '',
@@ -88,6 +95,7 @@ class ProductFormContainer extends Component {
      let name = event.target.name;
     this.setState( { [name]: value } )
    }
+
 
 //Render
  render() {
