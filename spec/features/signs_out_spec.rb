@@ -9,7 +9,7 @@ feature 'user signs out', %(
 
   scenario 'an authenticated user signs out by clicking the sign out button' do
     user = FactoryBot.create(:user)
-    visit root_path
+    visit new_user_session_path
     click_link 'Sign In'
     fill_in 'Email', with: user.email
     fill_in 'Password', with: user.password

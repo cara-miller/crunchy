@@ -23,7 +23,8 @@ class SupplyFormContainer extends Component {
       modalIsOpen: false,
       sold_in_quantity: '',
       unit_of_measurement: '',
-      cost: ''
+      cost: '',
+      currentUser: {}
     }
     this.handleOpenModal = this.handleOpenModal.bind(this);
     this.handleCloseModal = this.handleCloseModal.bind(this);
@@ -52,7 +53,8 @@ class SupplyFormContainer extends Component {
     .then(body => {
       this.handleCloseModal()
       this.setState({
-        supplies: body
+        supplies: body.supplies,
+        currentUser: body.current_user
       })
     })
     .catch(error => console.error(`Error in fetch: ${error.message}`));
@@ -73,7 +75,12 @@ class SupplyFormContainer extends Component {
 //Modal Methods
 
   handleOpenModal () {
+    if (this.state.currentUser = null ) {
+      event.preventDefault();
+      alert("You need to be logged in to do this!")
+    }  else {
   this.setState({ showModal: true });
+  }
 }
   handleCloseModal () {
     this.setState({

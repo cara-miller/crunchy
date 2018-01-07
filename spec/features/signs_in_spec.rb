@@ -9,7 +9,7 @@ feature 'user signs in', %(
 
   scenario 'an existing user specifies valid email and password' do
     user = FactoryBot.create(:user)
-    visit root_path
+    visit new_user_session_path
     click_link 'Sign In'
     fill_in 'Email', with: user.email
     fill_in 'Password', with: user.password
@@ -20,7 +20,7 @@ feature 'user signs in', %(
   end
 
   scenario 'a nonexistant email and password is supplied' do
-    visit root_path
+    visit new_user_session_path
     click_link 'Sign In'
     fill_in 'Email', with: 'nobody@example.com'
     fill_in 'Password', with: 'password'
@@ -33,7 +33,7 @@ feature 'user signs in', %(
 
   scenario 'an existing email with the wrong password is denied access' do
     user = FactoryBot.create(:user)
-    visit root_path
+    visit new_user_session_path
     click_link 'Sign In'
     fill_in 'Email', with: user.email
     fill_in 'Password', with: 'incorrectPassword'

@@ -80,6 +80,7 @@ class ProductsIndexContainer extends Component {
         <ProductFormContainer
           getProducts = {this.getProducts}
           userId = {this.state.currentUser.id}
+          currentUser = {this.state.currentUser}
         />
         {products}
         </div>

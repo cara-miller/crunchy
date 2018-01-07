@@ -4,7 +4,7 @@ class Api::V1::UsersController < ApplicationController
   def index
     # binding.pry
     users = User.all
-    render json: { users: users, current_user: current_user }
+    # render json: { users: users, current_user: current_user }
   end
 
   def destroy
