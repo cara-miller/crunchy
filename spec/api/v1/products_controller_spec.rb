@@ -21,7 +21,7 @@ RSpec.describe Api::V1::ProductsController, type: :controller do
       @user = FactoryBot.create(:user)
       sign_in @user
       p1 = FactoryBot.create(:product)
-      get :show, params: { id: 1 }
+      get :show, params: { id: p1.id }
       assert_response :success
       render_template :index
     end
