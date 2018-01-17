@@ -22,8 +22,25 @@ RSpec.describe Api::V1::ProductsController, type: :controller do
       sign_in @user
       p1 = FactoryBot.create(:product)
       get :show, params: { id: p1.id }
-      assert_response :success
       render_template :index
+      assert_response :success
     end
   end
+
+  describe 'POST create' do
+    it 'should make a new product object' do
+      @user = FactoryBot.create(:user)
+      sign_in @user
+      params = {
+        product: {
+          name: 'product',
+          retail_price: 25,
+          user_id: @user.id
+        },
+        user: User.where({ id: @user.id })
+      }
+      post :create, params: params
+    end
+  end
+
 end
