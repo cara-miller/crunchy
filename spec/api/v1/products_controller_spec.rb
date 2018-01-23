@@ -43,4 +43,25 @@ RSpec.describe Api::V1::ProductsController, type: :controller do
     end
   end
 
+  # describe 'POST update' do
+  #   it 'should update existing product object' do
+  #     @user = FactoryBot.create(:user)
+  #     @product = FactoryBot.create(:product)
+  #     sign_in @user
+  #     get :update, product_id: @product.id
+  #     params = {
+  #       product: {
+  #         id: @product.id,
+  #         name: 'updated name',
+  #         retail_price: @product.retail_price,
+  #         user_id: @user.id
+  #       },
+  #       user: User.where({ id: @user.id })
+  #      }
+  #
+  #      render_template :index
+  #      assert_response :success
+  #   end
+  # end
+
 end

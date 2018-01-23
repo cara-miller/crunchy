@@ -15,7 +15,7 @@ class Api::V1::LaborsController < ApiController
     @user = current_user
     @labor.user = @user
     @labor.save
-    if labor.save
+    if @labor.save
       render json: { labor: Labor.all }
     else
       render json:

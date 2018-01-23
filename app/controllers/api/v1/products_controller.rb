@@ -60,8 +60,6 @@ end
     params.require(:product).permit(
       :name,
       :retail_price,
-      :profit_margin,
-      :image,
       :user_id
     )
   end
