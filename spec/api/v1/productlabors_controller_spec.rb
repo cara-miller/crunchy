@@ -10,7 +10,7 @@ RSpec.describe Api::V1::ProductlaborsController, type: :controller do
       sign_in @user
       @product = FactoryBot.create(:product)
       @labor =FactoryBot.create(:labor)
-      @productsupply = FactoryBot.create(:productlabor
+      @productsupply = FactoryBot.create(:productlabor)
 
       get :index
       assert_response :success
@@ -19,8 +19,8 @@ RSpec.describe Api::V1::ProductlaborsController, type: :controller do
 
   describe 'POST create' do
     it 'should make a new productlabor object' do
-      p1 = FactoryBot.create(:product)
-      s1 =FactoryBot.create(:labor)
+      @product = FactoryBot.create(:product)
+      @labor =FactoryBot.create(:labor)
       @user = FactoryBot.create(:user)
       sign_in @user
       params = {
