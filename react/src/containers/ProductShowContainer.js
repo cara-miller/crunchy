@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import ProductTile from "../components/ProductTile";
+// import ProductTile from "../components/ProductTile";
 import ProductSupplyTile from "../components/ProductSupplyTile"
 import ProductLaborTile from "../components/ProductLaborTile"
 import AddSupplyToProduct from "../components/AddSupplyToProduct"

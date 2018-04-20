@@ -73,7 +73,6 @@ class LaborFormContainer extends Component {
 
   handleOpenModal () {
     // if (this.state.currentUser.id != null ) {
-      debugger
       this.setState({ showModal: true });
     // }  else {
     //   event.preventDefault();

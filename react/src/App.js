@@ -5,8 +5,8 @@ import { Route, IndexRoute, Router, browserHistory } from 'react-router';
 import thunk from 'redux-thunk';
 
 import Layout from './components/Layout';
-import ProductTile from './components/ProductTile'
-import ProductsIndexContainer from './containers/ProductsIndexContainer'
+// import ProductTile from './+pages/+product-catalog-page/ProductTile'
+import ProductsIndexContainer from './+pages/+product-catalog-page/ProductsIndexContainer'
 import ProductShowContainer from './containers/ProductShowContainer'
 import NavBar from './NavBar'
 import Home from './Home'
