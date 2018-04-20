@@ -1,4 +1,4 @@
-import ProductTile from '../../src/components/ProductTile';
+import ProductTile from '../../src/+pages/+product-catalog-page/ProductTile';
 
 describe('ProductTile', () =>{
   let wrapper,
