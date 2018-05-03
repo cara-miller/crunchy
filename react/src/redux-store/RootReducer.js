@@ -1,5 +1,7 @@
 import { combineReducers } from 'redux';
-import {fetchProductsCatalogReducer, deleteProductReducer } from './ducks/ProductCatalog.ducks'
+import {fetchProductsCatalogReducer } from './ducks/ProductCatalogFetch.ducks'
+import { deleteProductReducer} from './ducks/ProductCatalogDelete.ducks';
+
 
 export default combineReducers({
   fetchProductsCatalogReducer,

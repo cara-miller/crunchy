@@ -1,17 +1,17 @@
 import React from 'react';
 import { browserHistory, Link } from 'react-router';
-import { deleteProduct } from "../../redux-store/ducks/ProductCatalog.ducks";
+import { deleteProduct } from "../../redux-store/ducks/ProductCatalogDelete.ducks";
 
 const ProductTile = props =>{
 
 
   let deleteProductTile = () => {
-    deleteProduct(props.id)
+    deleteProduct()
   // props.getProducts();
   }
   
   let deleteButton;
-  deleteButton = <button id= "noborder" onClick={deleteProductTile}><i className="fa fa-trash-o fa-2x" aria-hidden="true"></i></button>
+  deleteButton = <button id= "noborder" onClick={deleteProductTile}><i className="fa fa-trash-o fa-2x" aria-hidden="true"></i>Delete</button>
   
   return(
     <div className='row callout secondary' id="producttile">

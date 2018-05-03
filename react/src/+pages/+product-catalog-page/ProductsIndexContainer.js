@@ -4,7 +4,8 @@ import { connect } from "react-redux";
 
 import ProductTile from "./ProductTile"
 // import ProductFormContainer from "./ProductFormContainer"
-import { fetchProductsCatalog, deleteProductReducer} from "../../redux-store/ducks/ProductCatalog.ducks";
+import { fetchProductsCatalog} from "../../redux-store/ducks/ProductCatalogFetch.ducks";
+import { deleteProductReducer} from "../../redux-store/ducks/ProductCatalogDelete.ducks";
 
 
 class ProductsIndexContainer extends Component {
@@ -32,9 +33,10 @@ class ProductsIndexContainer extends Component {
   //   this.getProducts();
   // }
 
-  deleteProductTile() {
-    this.props.deleteProduct(id);
-  }
+  // deleteProductTile() {
+  //   console.log("reached ")
+  //   this.props.deleteProduct(id);
+  // }
 
   render () {
     
@@ -53,9 +55,9 @@ class ProductsIndexContainer extends Component {
         id={product.id}
         name ={product.name}
         image={product.image}
-          retailPrice={product.retail_price}
-          profitMargin={product.profit_margin}
-          deleteProduct= {deleteProduct}
+        retailPrice={product.retail_price}
+        profitMargin={product.profit_margin}
+        deleteProduct= {deleteProduct}
       />
       )
     })
@@ -75,6 +77,7 @@ const mapStateToProps = (state) => ({
   currentUser: state.fetchProductsCatalogReducer.currentUser,
   deleteProduct: state.deleteProductReducer.id
 });
+//not sure about how mapping state to props works for deleting
 
 const mapDispatchToProps = (dispatch) => ({
   fetchProductsCatalog: () => dispatch(fetchProductsCatalog()),
