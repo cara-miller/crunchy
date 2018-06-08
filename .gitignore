@@ -22,3 +22,5 @@
 /app/assets/javascripts/bundle.js
 /react/coverage
 .env
+
+.vscode
