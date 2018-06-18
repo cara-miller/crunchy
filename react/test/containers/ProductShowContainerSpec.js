@@ -13,9 +13,9 @@
 //   wrapper = mount(<ProductShowContainer/>);
 //   });
 
-  // it('should have an initial state as an empty hash', () => {
-  //   expect(wrapper.state()).toEqual({ products: {} })
-  // });
+// it('should have an initial state as an empty hash', () => {
+//   expect(wrapper.state()).toEqual({ products: {} })
+// });
 
 //   it('should render a div tag', () => {
 //     expect(wrapper.find('div')).toBePresent();

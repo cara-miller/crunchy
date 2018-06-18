@@ -23,3 +23,5 @@
 /react/coverage
 /.vscode
 .env
+
+.vscode
